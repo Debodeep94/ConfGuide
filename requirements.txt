@@ -1,5 +1,4 @@
-streamlit
 json
+streamlit
 gspread
-pandas
-numpy
+oauth2client
