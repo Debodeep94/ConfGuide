@@ -1,7 +1,7 @@
 [
     {
         "metadata": {
-            "image_path": "./ConfGuide/images/patient64756_study1_view1_frontal.jpg",
+            "image_path": "./images/patient64756_study1_view1_frontal.jpg",
             "model": "rohithbojja_llava-med-v1.6",
             "flagged_pathologies": [
                 "Fracture",
@@ -25,7 +25,7 @@
     },
     {
         "metadata": {
-            "image_path": "./ConfGuide/images/patient64938_study1_view1_frontal.jpg",
+            "image_path": "./images/patient64938_study1_view1_frontal.jpg",
             "model": "rohithbojja_llava-med-v1.6",
             "flagged_pathologies": [
                 "Consolidation",
@@ -85,7 +85,7 @@
     },
     {
         "metadata": {
-            "image_path": "./ConfGuide/images/patient65008_study1_view1_frontal.jpg",
+            "image_path": "./images/patient65008_study1_view1_frontal.jpg",
             "model": "rohithbojja_llava-med-v1.6",
             "flagged_pathologies": [
                 "Atelectasis",
@@ -127,7 +127,7 @@
     },
     {
         "metadata": {
-            "image_path": "./ConfGuide/images/patient64871_study1_view1_frontal.jpg",
+            "image_path": "./images/patient64871_study1_view1_frontal.jpg",
             "model": "rohithbojja_llava-med-v1.6",
             "flagged_pathologies": [
                 "No Finding"
@@ -145,7 +145,7 @@
     },
     {
         "metadata": {
-            "image_path": "./ConfGuide/images/patient65110_study1_view1_frontal.jpg",
+            "image_path": "./images/patient65110_study1_view1_frontal.jpg",
             "model": "rohithbojja_llava-med-v1.6",
             "flagged_pathologies": [
                 "Enlarged Cardiomediastinum",
@@ -181,7 +181,7 @@
     },
     {
         "metadata": {
-            "image_path": "./ConfGuide/images/patient64912_study1_view1_frontal.jpg",
+            "image_path": "./images/patient64912_study1_view1_frontal.jpg",
             "model": "rohithbojja_llava-med-v1.6",
             "flagged_pathologies": [
                 "Edema",
@@ -229,7 +229,7 @@
     },
     {
         "metadata": {
-            "image_path": "./ConfGuide/images/patient64770_study1_view1_frontal.jpg",
+            "image_path": "./images/patient64770_study1_view1_frontal.jpg",
             "model": "rohithbojja_llava-med-v1.6",
             "flagged_pathologies": [
                 "Atelectasis",
@@ -319,7 +319,7 @@
     },
     {
         "metadata": {
-            "image_path": "./ConfGuide/images/patient64965_study1_view1_frontal.jpg",
+            "image_path": "./images/patient64965_study1_view1_frontal.jpg",
             "model": "rohithbojja_llava-med-v1.6",
             "flagged_pathologies": [
                 "Atelectasis",
@@ -403,7 +403,7 @@
     },
     {
         "metadata": {
-            "image_path": "./ConfGuide/images/patient64847_study1_view1_frontal.jpg",
+            "image_path": "./images/patient64847_study1_view1_frontal.jpg",
             "model": "rohithbojja_llava-med-v1.6",
             "flagged_pathologies": [
                 "Cardiomegaly",
@@ -469,7 +469,7 @@
     },
     {
         "metadata": {
-            "image_path": "./ConfGuide/images/patient64838_study1_view1_frontal.jpg",
+            "image_path": "./images/patient64838_study1_view1_frontal.jpg",
             "model": "rohithbojja_llava-med-v1.6",
             "flagged_pathologies": [
                 "Cardiomegaly",
