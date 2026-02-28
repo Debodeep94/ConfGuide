@@ -1,10 +1,8 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import json
 import os
 import time
-from typing import List
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -35,6 +33,7 @@ def append_to_gsheet(worksheet_name, row_dict):
             headers = list(row_dict.keys())
             ws.append_row(headers)
         
+        # Ensure all values are strings for GSheets
         values = [str(row_dict.get(h, "")) for h in headers]
         ws.append_row(values)
     except Exception as e:
@@ -42,7 +41,6 @@ def append_to_gsheet(worksheet_name, row_dict):
 
 @st.cache_data(ttl=5)
 def get_done_uids(user):
-    """Fetches already completed UIDs from GSheets to prevent duplicates."""
     try:
         sh = connect_gsheet()
         ws = sh.worksheet("Annotations")
@@ -55,25 +53,28 @@ def get_done_uids(user):
 # === DATA LOADING ===
 @st.cache_data
 def load_and_prepare_data():
-    # Replace with your actual JSON filename
-    with open("human_trial.json", "r") as f:
+    # Load your JSON file
+    with open("data.json", "r") as f:
         data = json.load(f)
     
     prepared_data = []
+    # Simple split: first half Blind, second half Guided
     mid = len(data) // 2
     
     for i, entry in enumerate(data):
-        # Assign mode: First half Blind, Second half Guided (or randomize)
+        # Accessing the 'data' key from your specific JSON snippet
+        core_metadata = entry.get("data", entry.get("metadata", {}))
         mode = "Blind" if i < mid else "Guided"
         
-        # Create a unique ID for tracking
-        img_name = entry['metadata']['image_path'].split('/')[-1]
-        uid = f"{i}_{img_name}"
+        # Clean filename extraction
+        original_path = core_metadata.get("image_path", "")
+        filename = os.path.basename(original_path)
+        uid = f"case_{i}_{filename}"
         
         prepared_data.append({
             "uid": uid,
             "mode": mode,
-            "metadata": entry['metadata'],
+            "metadata": core_metadata,
             "guidance": entry.get('clinical_guidance', {}).get('results', [])
         })
     return prepared_data
@@ -84,7 +85,7 @@ USERS = st.secrets["credentials"]
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
-def login():
+if not st.session_state.logged_in:
     st.title("🔐 Radiology Portal Login")
     user = st.text_input("Username")
     pw = st.text_input("Password", type="password")
@@ -95,9 +96,6 @@ def login():
             st.rerun()
         else:
             st.error("Invalid credentials")
-
-if not st.session_state.logged_in:
-    login()
     st.stop()
 
 # === MAIN APP LOGIC ===
@@ -105,15 +103,16 @@ all_data = load_and_prepare_data()
 done_uids = get_done_uids(st.session_state.username)
 remaining_data = [d for d in all_data if d["uid"] not in done_uids]
 
-# Progress Sidebar
-st.sidebar.title(f"Welcome, Dr. {st.session_state.username}")
-progress_val = len(done_uids) / len(all_data)
-st.sidebar.progress(progress_val)
-st.sidebar.write(f"Completed: {len(done_uids)} / {len(all_data)}")
+# Sidebar Progress
+st.sidebar.title(f"Dr. {st.session_state.username}")
+done_count = len(done_uids)
+total_count = len(all_data)
+st.sidebar.progress(done_count / total_count if total_count > 0 else 0)
+st.sidebar.write(f"Completed: {done_count} / {total_count}")
 
 if not remaining_data:
-    st.success("🎉 You have completed all assigned cases!")
-    if st.button("Logout"):
+    st.success("🎉 All cases completed! Thank you for your contribution.")
+    if st.button("Log Out"):
         st.session_state.logged_in = False
         st.rerun()
 else:
@@ -123,72 +122,74 @@ else:
     metadata = current_case["metadata"]
     guidance_list = current_case["guidance"]
 
-    st.header(f"Case Study: {uid} ({mode} Mode)")
+    st.subheader(f"Evaluation Mode: {mode}")
     
-    # --- Layout: Image on Left, Logic on Right ---
-    col_img, col_info = st.columns([1, 1])
+    col_img, col_annot = st.columns([1.2, 1])
 
     with col_img:
-        st.subheader("X-Ray Image")
-        img_path = metadata["image_path"]
-        if os.path.exists(img_path):
-            st.image(img_path, use_container_width=True)
+        # Robust Path Handling
+        filename = os.path.basename(metadata["image_path"])
+        # Attempt 1: images/filename | Attempt 2: filename | Attempt 3: absolute path
+        possible_paths = [os.path.join("images", filename), filename, metadata["image_path"]]
+        
+        image_to_show = None
+        for p in possible_paths:
+            if os.path.exists(p):
+                image_to_show = p
+                break
+        
+        if image_to_show:
+            st.image(image_to_show, use_container_width=True, caption=f"Case ID: {uid}")
         else:
-            st.error(f"Image File Not Found: {img_path}")
+            st.error(f"⚠️ Image not found. Please ensure '{filename}' is in the 'images/' folder.")
 
-    with col_info:
-        # 1. Show AI guidance ONLY in Guided Mode
+    with col_annot:
+        # 1. Guided Logic
         if mode == "Guided":
-            st.subheader("💡 Clinical Guidance (AI)")
+            st.markdown("### 🔍 AI Clinical Guidance")
             for item in guidance_list:
-                with st.expander(f"Analysis for: {item['label']}", expanded=False):
-                    st.markdown("**Reasons for presence:**")
-                    st.info(item.get('reasons for presence', 'N/A'))
-                    st.markdown("**Reasons against presence:**")
-                    st.warning(item.get('reasons against presence', 'N/A'))
+                with st.expander(f"Pathology: {item['label']}", expanded=True):
+                    st.write(f"**Reasons For:** {item.get('reasons for presence', 'N/A')}")
+                    st.write(f"**Reasons Against:** {item.get('reasons against presence', 'N/A')}")
         else:
-            st.info("ℹ️ **Blind Study Mode**: Please evaluate the image based on the listed pathologies below.")
+            st.info("💡 **Blind Evaluation**: Review the image and select pathologies based on clinical observation.")
 
         # 2. Annotation Form
-        st.subheader("📋 Your Evaluation")
-        st.write("Indicate presence for the flagged pathologies:")
+        st.markdown("---")
+        st.markdown("### 📋 Your Diagnosis")
         
-        doctor_selections = {}
-        flagged = metadata["flagged_pathologies"]
+        flagged = metadata.get("flagged_pathologies", [])
+        selections = {}
         
-        # Create a dynamic form based on flagged pathologies in JSON
         for pathology in flagged:
-            doctor_selections[pathology] = st.radio(
-                f"Is **{pathology}** present?",
-                ["Yes", "No", "Unsure"],
-                key=f"{uid}_{pathology}",
-                horizontal=True
+            selections[pathology] = st.selectbox(
+                f"Status of {pathology}:",
+                ["- Select -", "Present", "Absent", "Inconclusive"],
+                key=f"{uid}_{pathology}"
             )
 
-        comments = st.text_area("Additional Clinical Notes (Optional)", key=f"{uid}_notes")
+        notes = st.text_area("Observations/Notes", key=f"{uid}_notes")
 
-        if st.button("💾 Save and Next"):
-            start_time = st.session_state.get("start_time", time.time())
-            duration = round(time.time() - start_time, 2)
-            
-            # Prepare result row
-            result = {
-                "uid": uid,
-                "annotator": st.session_state.username,
-                "mode": mode,
-                "image_path": img_path,
-                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                "duration_seconds": duration,
-                "comments": comments,
-                **{f"pathology_{k}": v for k, v in doctor_selections.items()}
-            }
-            
-            append_to_gsheet("Annotations", result)
-            st.session_state.start_time = time.time() # Reset timer
-            st.success("Annotation Saved!")
-            time.sleep(1)
-            st.rerun()
+        if st.button("Submit & Next Case"):
+            # Validation: Ensure all pathologies are answered
+            if any(v == "- Select -" for v in selections.values()):
+                st.warning("Please provide a status for all flagged pathologies.")
+            else:
+                duration = round(time.time() - st.session_state.get("start_time", time.time()), 2)
+                
+                result_row = {
+                    "uid": uid,
+                    "annotator": st.session_state.username,
+                    "mode": mode,
+                    "duration_sec": duration,
+                    "notes": notes,
+                    **{f"pathology_{k}": v for k, v in selections.items()}
+                }
+                
+                append_to_gsheet("Annotations", result_row)
+                st.session_state.start_time = time.time() # Reset timer
+                st.rerun()
 
-# Set start time for the first load
+# Initialize timer for the current case
 if "start_time" not in st.session_state:
     st.session_state.start_time = time.time()
