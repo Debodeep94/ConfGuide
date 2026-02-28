@@ -1,0 +1,535 @@
+[
+    {
+        "metadata": {
+            "image_path": "./ConfGuide/images/patient64756_study1_view1_frontal.jpg",
+            "model": "rohithbojja_llava-med-v1.6",
+            "flagged_pathologies": [
+                "Fracture",
+                "No Finding"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "The radiographic image shows a marked discrepancy between the seemingly normal appearance of the lung fields and the presence of 'L' and 'M' markers, which could indicate a fracture. Additionally, there is a visible deformity in the bone structure that may suggest a fracture. However, it is important to consider the patient's clinical history and physical examination findings, as these can provide additional context for interpreting the X-ray.",
+                    "reasons against presence": "Upon closer inspection, the deformity in the bone structure appears to be due to a pre-existing condition rather than a recent fracture. The lung fields appear normal, and there are no signs of soft tissue swelling or inflammation associated with a fracture. Furthermore, the patient denies any recent trauma or fall, which would be more consistent with an acute fracture. Based on these findings, it is more likely that the Fracture label is not present in this chest X-ray."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The chest X-ray appears to show a normal lung architecture with no visible consolidations, pleural effusions, or lymphadenopathy. The heart size is within normal limits and the diaphragm is well-defined. There are no focal pulmonary opacities or areas of increased density that would suggest a parenchymal abnormality.",
+                    "reasons against presence": "While the chest X-ray does not show any overt signs of disease, it is important to consider the patient's clinical history, symptoms, and additional imaging studies or laboratory data before concluding a definitive No Finding. The absence of specific findings on a single X-ray image may not rule out the presence of lung disease or other respiratory conditions. A more comprehensive evaluation may be necessary to ensure an accurate diagnosis."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./ConfGuide/images/patient64938_study1_view1_frontal.jpg",
+            "model": "rohithbojja_llava-med-v1.6",
+            "flagged_pathologies": [
+                "Consolidation",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pleural Other",
+                "Pneumonia",
+                "Pneumothorax"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Consolidation",
+                    "reasons for presence": "The image shows a homogenous, opaque appearance within the right lung, extending from the upper to lower zones. This could be indicative of parenchymal consolidation. Additionally, there is a multilobar distribution of the opacity, which is consistent with a multilobar consolidation.",
+                    "reasons against presence": "However, it is important to consider that the presence of consolidation may be due to various causes, and additional clinical information and imaging studies may be necessary to confirm the diagnosis and rule out other potential etiologies. Furthermore, the absence of pleural effusion or pleural inflammation in this image argues against an emphysematous or obstructive process, which could also present with consolidation."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "Periosteal reaction and possible bone fragment visible in the right lung field.",
+                    "reasons against presence": "No clear fracture line or disruption of the bony structure evident in the image."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "The image shows a well-defined, oval-shaped opacity in the right lung. This is a solid lesion with a smooth, well-circumscribed border and a homogeneous density. There is no evident air or fluid within the lesion. The presence of a solid, well-defined lesion in the lung suggests the possible presence of a lung lesion.",
+                    "reasons against presence": "However, it is important to note that a single chest X-ray may not be sufficient to confirm the diagnosis of a lung lesion. Additional imaging modalities, such as a high-resolution computed tomography (HRCT) scan or a positron emission tomography (PET) scan, may be necessary to further evaluate the lesion and provide a more accurate diagnosis."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "The image shows multiple areas of increased density in both lungs, which could be considered as Lung Opacity. These areas of increased density may be due to various causes, including infection, inflammation, or malignancy. However, without additional clinical information and a thorough evaluation by a qualified healthcare professional, it is not possible to definitively confirm the presence of Lung Opacity.",
+                    "reasons against presence": "There are no overt signs of lung collapse, consolidation, or pleural effusion visible in this chest X-ray. Additionally, the lung fields appear relatively clear, and there are no prominent areas of parenchymal abnormality that would strongly suggest the presence of Lung Opacity. It is important to consider the patient's clinical history, symptoms, and additional imaging studies, if available, to better assess the possibility of Lung Opacity."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The chest X-ray appears to show normal lung fields with no visible consolidations, pleural effusions, or lymphadenopathy. The heart size is within normal limits and the diaphragm is flat. There are no focal parenchymal abnormalities or pleural abnormalities present.",
+                    "reasons against presence": "While the chest X-ray does not show any overt signs of disease, it is important to consider the patient's clinical history, symptoms, and additional diagnostic studies to fully assess for the presence of underlying lung or respiratory conditions. The absence of findings on a single imaging modality may not rule out all possible abnormalities."
+                },
+                {
+                    "label": "Pleural Other",
+                    "reasons for presence": "The presence of a multilobar consolidation in the right lung and an effusion in the right pleural space.",
+                    "reasons against presence": "The absence of any visible pleural abnormalities or irregularities in the remaining lung segments and pleural spaces."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "Perihilar and multilobar consolidations are present, which may indicate pneumonia. These are areas of lung tissue that have become solid and dense, appearing as opacities on the X-ray.",
+                    "reasons against presence": "There are no pleural effusions or markedly increased bronchial markings visible in this image. Pleural effusions are accumulations of fluid in the pleural space, while markedly increased bronchial markings can be a sign of bronchitis or other respiratory conditions. The absence of these findings argues against the presence of pneumonia."
+                },
+                {
+                    "label": "Pneumothorax",
+                    "reasons for presence": "The presence of a homogenous, low-density area in the pleural space, which is the apical pleural space in this case. This appears to be a unilateral process affecting the right side of the chest.",
+                    "reasons against presence": "There are no visible signs of lung collapse, mediastinal shift, or diaphragmatic elevation. Additionally, the heart size and position appear normal, which argues against the presence of a large pneumothorax. The absence of respiratory symptoms or distress in the patient's history also supports the notion that the findings may be incidental or not clinically significant."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./ConfGuide/images/patient65008_study1_view1_frontal.jpg",
+            "model": "rohithbojja_llava-med-v1.6",
+            "flagged_pathologies": [
+                "Atelectasis",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pneumonia"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Atelectasis",
+                    "reasons for presence": "The presence of lung collapse or consolidation in the right upper lobe and lower lobe, as well as the marked apical pleural thickening, may suggest Atelectasis. Additionally, the absence of visible gas shadows or air-trapping in these areas could support this diagnosis.",
+                    "reasons against presence": "However, it is important to consider other possible causes for lung collapse or consolidation, such as pneumonia or pulmonary edema. Furthermore, the presence of a small pleural effusion in the left lower lobe may not be sufficient to confirm Atelectasis without additional clinical context. Therefore, while there are some radiographic features that could support the diagnosis of Atelectasis, a definitive conclusion would require further evaluation and consideration of the patient's clinical history and symptoms."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "The image shows a round, well-defined opacity in the right lung. This appears to be a multilobar consolidation with a central cavity. The presence of a multilobar consolidation with a central cavity is consistent with a lung lesion.",
+                    "reasons against presence": "However, it is important to consider that multilobar consolidations can be caused by various conditions, and additional clinical information and imaging studies may be necessary to confirm the diagnosis of a lung lesion. The absence of any surrounding pleural effusion or lymphadenopathy in this image does not argue against the presence of a lung lesion, as these findings may not always be present in all cases."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "The image shows a multilobar consolidation in the right lung, which is a type of lung opacity. This appears as a homogeneous, opaque area within the lung parenchyma, affecting multiple lobes. The consolidation is densest in the middle lobe and extends to the upper and lower lobes.",
+                    "reasons against presence": "There are no visible pleural effusions or markedly increased bronchial markings that would strongly argue against the presence of lung opacity."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The chest X-ray appears to show a normal lung architecture with no visible consolidations, pleural effusions, or lymphadenopathy. The heart size is within normal limits, and there are no fractures or dislocations evident. The diaphragm is intact, and the gastric air bubble is present in the expected location.",
+                    "reasons against presence": "There are no specific findings that would suggest the presence of a disease or abnormality. The absence of any notable abnormalities could be considered as supporting the 'No Finding' diagnosis. However, it is important to consider the patient's clinical history, symptoms, and additional diagnostic tests to ensure a comprehensive assessment."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "Increased opacity in the right lung, which could be indicative of pneumonia. This appears as a consolidation or lung collapse, with a well-defined border and homogeneous density.",
+                    "reasons against presence": "No visible pleural effusion or pleuritic changes. There is no evidence of multilobar or upper lobe predominance, which are sometimes associated with viral pneumonia. Additionally, there are no signs of respiratory distress or tension pneumothorax."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./ConfGuide/images/patient64871_study1_view1_frontal.jpg",
+            "model": "rohithbojja_llava-med-v1.6",
+            "flagged_pathologies": [
+                "No Finding"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lung fields appear clear with no visible consolidations, pleural effusions, or lymphadenopathy. The heart size is within normal limits and the diaphragm is well-defined. There are no focal pulmonary opacities or areas of increased density that would suggest a parenchymal abnormality.",
+                    "reasons against presence": "There are no overt signs of respiratory distress or compromise, such as marked bronchiectasis, severe emphysema, or a large pleural effusion. Additionally, the absence of a known predisposition or clinical indication for a specific lung disease does not necessarily rule out the presence of a hidden finding. However, based on the visible radiographic features, the initial assessment is consistent with a 'No Finding' classification."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./ConfGuide/images/patient65110_study1_view1_frontal.jpg",
+            "model": "rohithbojja_llava-med-v1.6",
+            "flagged_pathologies": [
+                "Enlarged Cardiomediastinum",
+                "Fracture",
+                "Lung Lesion",
+                "No Finding"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Enlarged Cardiomediastinum",
+                    "reasons for presence": "The presence of a markedly increased vertical distance between the superior and inferior costal margins, as well as the apparent displacement of the aortic knob cephalad and to the left of the tracheal bifurcation.",
+                    "reasons against presence": "The absence of any visible pericardial effusion or pleural effusion, and the normal appearance of the lung fields and heart size."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "Periosteal reaction and possible fracture line visible in the right posterior chest area.",
+                    "reasons against presence": "No clear disruption of bone continuity or high-density fracture fragment seen in the image."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "The image shows a well-defined, oval-shaped opacity in the right lung. This appears to be a multilobar consolidation with a superoinferior location. The presence of a multilobar consolidation could be indicative of pneumonia or another lung infection.",
+                    "reasons against presence": "However, it is important to consider the patient's clinical history and symptoms, as well as additional imaging studies, to fully evaluate the possibility of a lung lesion. The absence of any surrounding fibrotic changes or pleural effusion in this image argues against the presence of a lung lesion."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The chest X-ray appears to show a normal lung architecture with no visible consolidations, pleural effusions, or lymphadenopathy. The heart size is within normal limits and the diaphragm is well defined. There are no focal pulmonary opacities or areas of increased density that would suggest a parenchymal abnormality.",
+                    "reasons against presence": "However, it is important to consider the patient's clinical history, symptoms, and additional imaging studies if available, as these may provide context for the interpretation of the chest X-ray. Additionally, the presence of No Finding in the label might not be entirely accurate, as a true negative result would require a comprehensive assessment of all potential findings, which is beyond the scope of this image."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./ConfGuide/images/patient64912_study1_view1_frontal.jpg",
+            "model": "rohithbojja_llava-med-v1.6",
+            "flagged_pathologies": [
+                "Edema",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pneumonia"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Edema",
+                    "reasons for presence": "Perihilar and right upper quadrant pleural effusion",
+                    "reasons against presence": "No apparent lung or pleural abnormalities visible in the remaining sections of the chest X-ray"
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "Periosteal reaction and possible bone fragment visible in the right lung field.",
+                    "reasons against presence": "No clear fracture line or disruption of the bony structure evident in the image."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "The image shows a well-defined, oval-shaped opacity in the right lung. This is a solid lesion with a smooth, well-circumscribed border and a homogeneous density. There is no evident air or fluid within the lesion. The presence of a solid, well-defined lesion in the lung suggests the possible presence of a lung lesion.",
+                    "reasons against presence": "However, it is important to note that a single chest X-ray may not be sufficient to confirm the diagnosis of a lung lesion. Additional imaging studies, such as a high-resolution computed tomography (HRCT) scan or a positron emission tomography (PET) scan, may be necessary to further evaluate the lesion and provide a more accurate diagnosis."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "The image shows multiple areas of increased density in both lungs, which could be considered as Lung Opacity. These areas of increased density may represent pulmonary consolidations or other lung abnormalities.",
+                    "reasons against presence": "However, it is important to note that the presence of Lung Opacity is not definitively confirmed by this X-ray alone. Additional imaging studies or clinical evaluation may be necessary to further assess the nature and significance of these findings."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The chest X-ray appears to show a normal lung architecture with no visible consolidations, pleural effusions, or lymphadenopathy. The heart size is within normal limits and the diaphragm is well defined. There are no focal pulmonary opacities or areas of parenchymal abnormality. The absence of these findings supports the diagnosis of No Finding.",
+                    "reasons against presence": "However, it is important to consider the patient's clinical history, symptoms, and additional imaging studies or laboratory data before making a definitive conclusion. The presence of respiratory symptoms or physical examination findings not visible on the X-ray could potentially lead to a different diagnosis. Additionally, the image quality and patient preparation may also impact the accuracy of the assessment."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "Perihilar and multilobar consolidations are present in both lungs. These appear to be the densest areas of opacity and could be indicative of pneumonia.",
+                    "reasons against presence": "There are no pleural effusions or markedly increased bronchial markings visible in this image, which may argue against the presence of pneumonia."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./ConfGuide/images/patient64770_study1_view1_frontal.jpg",
+            "model": "rohithbojja_llava-med-v1.6",
+            "flagged_pathologies": [
+                "Atelectasis",
+                "Cardiomegaly",
+                "Consolidation",
+                "Edema",
+                "Enlarged Cardiomediastinum",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pleural Effusion",
+                "Pleural Other",
+                "Pneumonia",
+                "Pneumothorax"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Atelectasis",
+                    "reasons for presence": "The presence of lung collapse or atelectasis may be suggested by the increased density and loss of lung architecture in the right lung, particularly in the upper lobe. This appears to be a multilobar collapse affecting both the right upper and lower lobes.",
+                    "reasons against presence": "There is no visible consolidation or pleural effusion present in the image, which could potentially be associated with atelectasis. Additionally, the heart size appears normal, and there are no signs of mediastinal shift or pleural irritation. These findings argue against the presence of atelectasis."
+                },
+                {
+                    "label": "Cardiomegaly",
+                    "reasons for presence": "The presence of cardiomegaly may be suggested by the apparent enlargement of the cardiac silhouette in the superior-superior view. This could be due to various factors, including pre-existing heart conditions or fluid accumulation in the pericardial sac. However, it is important to consider other possible causes of an enlarged cardiac silhouette, such as respiratory or pulmonary abnormalities, before making a definitive diagnosis.",
+                    "reasons against presence": "There are no visible radiographic evidences in this image that argue against the presence of cardiomegaly. The cardiac silhouette appears to be enlarged, and without additional clinical context or imaging studies, it is difficult to rule out cardiomegaly as a potential diagnosis."
+                },
+                {
+                    "label": "Consolidation",
+                    "reasons for presence": "The image shows a homogenous, opaque appearance within the right lung, extending from the upper to lower zones. This could be indicative of consolidation. Additionally, there is a multilobar distribution, with involvement of both the upper and lower lobes.",
+                    "reasons against presence": "However, it is important to consider other possible causes for the observed opacity, such as effusion or pneumonia. The presence of air bronchograms and the absence of pleural effusion argue against the diagnosis of consolidation."
+                },
+                {
+                    "label": "Edema",
+                    "reasons for presence": "Perihilar and right paracardiac areas appear more opaque and dense than the surrounding lung tissue, which may indicate the presence of edema. Additionally, there is a multilobar consolidation in the right lung that could be due to edema or another cause.",
+                    "reasons against presence": "The rest of the lung fields appear relatively clear with no obvious areas of increased density or pleural effusion, which argues against the presence of generalized edema. The heart size appears normal, and there are no visible lymph nodes enlarged due to inflammation or infection, further suggesting that the edema may be localized rather than generalized."
+                },
+                {
+                    "label": "Enlarged Cardiomediastinum",
+                    "reasons for presence": "The radiograph demonstrates a prominent vertical heart shadow that extends above the aortic knob and below the main pulmonary artery. This horizontal extent of the cardiac silhouette suggests an enlarged cardiomediastinal space.",
+                    "reasons against presence": "There are no obvious signs of increased density or multilobar consolidation within the lung fields that could be indicative of a large pericardial effusion or tamponade. Additionally, the mediastinal width appears to be within normal limits, which argues against the presence of a significant pericardial effusion."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "Periosteal reaction and callus formation are visible in the anterior and posterior aspects of the right second rib, suggesting a healing fracture.",
+                    "reasons against presence": "No clear discontinuity or displacement of the bone segments is apparent in the image."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "The image shows a well-defined, oval-shaped opacity in the right lung. This appears to be a multilobar consolidation with air bronchograms present within it. These findings are consistent with a lung lesion.",
+                    "reasons against presence": "However, it is important to note that a single radiographic image may not provide a complete assessment of the lung tissue. Additional imaging studies or a consultation with a pulmonary specialist may be necessary to confirm the presence of a lung lesion and rule out other potential causes for the observed findings."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "The image shows multiple areas of increased density in both lungs, which could be considered as Lung Opacity. These areas of increased density may represent pulmonary consolidations or other lung abnormalities.",
+                    "reasons against presence": "However, it is important to note that the presence of Lung Opacity is a subjective finding and can vary based on the observer's interpretation. Additionally, there are no visible pleural effusions, lymphadenopathy, or other obvious signs of lung disease in this image."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The chest X-ray appears to show a normal lung architecture with no visible consolidations, pleural effusions, or lymphadenopathy. The heart size is within normal limits and the diaphragm is well-defined. There are no focal pulmonary opacities or areas of increased density that would suggest a parenchymal abnormality.",
+                    "reasons against presence": "However, it is important to consider the patient's clinical history, symptoms, and additional imaging studies if available, as these may provide context that could influence the interpretation of the chest X-ray. Additionally, the presence of No Finding in the label might not fully account for the possibility of subtle abnormalities or findings that could be present but not immediately apparent without a more thorough evaluation by a qualified radiologist."
+                },
+                {
+                    "label": "Pleural Effusion",
+                    "reasons for presence": "Increased opacity or cloudiness in the pleural space, particularly in the lower lobes of the lungs.",
+                    "reasons against presence": "No visible pleural effusion is apparent in this chest X-ray."
+                },
+                {
+                    "label": "Pleural Other",
+                    "reasons for presence": "The presence of pleural effusion is suggested by the homogeneous, low-density area observed in the posterior and inferior segments of both lungs. This could be due to various causes, including heart failure, pneumonia, or malignancy.",
+                    "reasons against presence": "There are no visible signs of pleural inflammation or irritation, such as pleural thickening or an increased bronchial marking. Additionally, there is no evidence of a loculated pleural collection or an emissary vein thrombosis."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "Perihilar and multilobar consolidations are present, which may indicate pneumonia. These are areas of lung tissue that have become solid and cloudy due to fluid accumulation or cellular infiltration.",
+                    "reasons against presence": "There are no visible pleural effusions or marked bronchiectasis, which are sometimes associated with pneumonia. Additionally, the lung fields appear relatively clear, and there is no evident tachypnea or respiratory distress, which may be signs of a more severe respiratory infection."
+                },
+                {
+                    "label": "Pneumothorax",
+                    "reasons for presence": "The presence of a homogenous, low-density area in the pleural space, which is the apical pleural space in this case. This appears to be a unilateral pneumothorax affecting the right lung.",
+                    "reasons against presence": "There are no visible signs of lung collapse, mediastinal shift, or diaphragmatic elevation. Additionally, the heart size and position appear normal, which argues against the presence of a tension pneumothorax."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./ConfGuide/images/patient64965_study1_view1_frontal.jpg",
+            "model": "rohithbojja_llava-med-v1.6",
+            "flagged_pathologies": [
+                "Atelectasis",
+                "Cardiomegaly",
+                "Consolidation",
+                "Edema",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pleural Effusion",
+                "Pleural Other",
+                "Pneumonia",
+                "Pneumothorax"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Atelectasis",
+                    "reasons for presence": "The presence of lung collapse or atelectasis is suggested by the markedly increased density in the right lung, particularly in the upper lobe. This appears to be a multilobar collapse with the greatest density in the apical segment. The absence of lung markings and the smooth, homogeneous appearance of the affected area further support the diagnosis of atelectasis.",
+                    "reasons against presence": "However, it is important to consider other possible causes of lung density, such as pneumonia or pulmonary edema. Additionally, the presence of a small pleural effusion in the left lung may be present, but it does not necessarily rule out the possibility of atelectasis. Further clinical evaluation and consideration of the patient's symptoms and medical history are necessary to confirm the diagnosis of atelectasis."
+                },
+                {
+                    "label": "Cardiomegaly",
+                    "reasons for presence": "The presence of cardiomegaly may be suggested by the upward and outward displacement of the left main bronchus, which appears to be compressed by the enlarged heart shadow. Additionally, the aortic knob may appear more prominent in a cardiomegaly case.",
+                    "reasons against presence": "However, it is important to note that these findings are not specific to cardiomegaly and can be present in other conditions as well. Furthermore, the absence of clear elevation of the heart shadow or visible pericardial effusion argues against the diagnosis of cardiomegaly."
+                },
+                {
+                    "label": "Consolidation",
+                    "reasons for presence": "The image shows a homogenous, opaque appearance within the right lung, which could be indicative of Consolidation. This appears to be a multilobar consolidation affecting both the upper and lower lobes of the right lung.",
+                    "reasons against presence": "However, it is important to consider other possible causes for the observed opacity, such as pneumonia or pulmonary edema. Additionally, the presence of a small pleural effusion in the left hemithorax could be confusing the appearance of Consolidation. Further clinical evaluation and additional imaging studies may be necessary to confirm the diagnosis and rule out other possibilities."
+                },
+                {
+                    "label": "Edema",
+                    "reasons for presence": "Perihilar and right upper quadrant pleural effusion",
+                    "reasons against presence": "No visible lung or soft tissue swelling, no reactive bone changes"
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "Periosteal reaction and possible fracture line visible in the superior aspect of the right lung, extending from the pleura to the hilum.",
+                    "reasons against presence": "No clear disruption of the bone continuity or callus formation evident in the image."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "The image shows a multilobar consolidation in the right lung, which could be indicative of a lung lesion. This appears as a homogenous opacity that affects more than one lobe of the lung.",
+                    "reasons against presence": "However, it is important to note that a single chest X-ray may not be sufficient to definitively diagnose a lung lesion. Additional imaging studies or a consultation with a pulmonologist may be necessary for further evaluation and assessment."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "The image shows multiple areas of increased density in both lungs, which could be considered as Lung Opacity. These areas of increased density may represent pulmonary consolidations or other lung abnormalities.",
+                    "reasons against presence": "However, it is important to note that the presence of Lung Opacity is not definitively confirmed without additional clinical context and a thorough assessment by a healthcare professional. Factors such as the patient's symptoms, medical history, and additional diagnostic tests may be necessary to determine the underlying cause of these areas of increased density and to provide an accurate diagnosis."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The chest X-ray appears to show normal lung fields with no visible consolidations, pleural effusions, or lymphadenopathy. The heart size is within normal limits and the diaphragm is well-defined. There are no focal pulmonary abnormalities or pleural irregularities present.",
+                    "reasons against presence": "While the chest X-ray does not show any overt abnormalities, the absence of findings may be due to various factors, including the patient's age, smoking history, occupational exposure, or underlying medical conditions. Additionally, the image does not provide information on the patient's respiratory symptoms or history, which could potentially influence the interpretation of the X-ray. Furthermore, the presence of normal findings in a single X-ray may not rule out the existence of lung disease or other respiratory conditions, as these may not be apparent in a static image. Therefore, while the current X-ray suggests no finding, it is important to consider the patient's clinical history and additional diagnostic tests or imaging studies as needed to reach a comprehensive assessment of their respiratory health."
+                },
+                {
+                    "label": "Pleural Effusion",
+                    "reasons for presence": "In the provided chest X-ray image, there is a visible accumulation of fluid in the pleural space. This appears as a homogeneous, low-density area located between the lungs and the chest wall. The presence of Pleural Effusion is further supported by the absence of lung markings or respiratory effort-related changes in the affected areas.",
+                    "reasons against presence": "However, it is important to note that the assessment of Pleural Effusion solely based on a static chest X-ray image may not be entirely accurate. Additional clinical information, such as patient history and physical examination findings, as well as consideration of other diagnostic tools like computed tomography (CT) scans or ultrasound, are necessary to confirm the diagnosis of Pleural Effusion with greater certainty."
+                },
+                {
+                    "label": "Pleural Other",
+                    "reasons for presence": "The presence of pleural effusion is suggested by the homogeneous, low-density area observed in the posterior and inferior segments of both lungs. This could be due to various causes, and further evaluation with additional imaging or clinical assessment would be necessary to determine the etiology.",
+                    "reasons against presence": "There are no visible pleural abnormalities or collections that would support the presence of Pleural Other. The lung fields appear to be clear, and there is no evidence of pleural thickening, plaques, or other suggestive findings."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "The presence of consolidations or lung tissue that appears more dense than the surrounding parenchyma in both lungs, particularly in the right lower lobe. This could be indicative of pneumonia.",
+                    "reasons against presence": "There are no visible pleural effusions, pleural thickening, or multilobar consolidations. Additionally, there is no evidence of lymphadenopathy or a hazy appearance to the lung fields, which are often associated with pneumonia. The absence of these findings argues against the diagnosis of pneumonia."
+                },
+                {
+                    "label": "Pneumothorax",
+                    "reasons for presence": "The presence of a homogenous, low-density area in the pleural space, which is the apparent absence of lung tissue in the affected region. This could be indicative of a pneumothorax.",
+                    "reasons against presence": "There are no visible signs of lung collapse or displacement of the mediastin, which are common findings in a pneumothorax. Additionally, the diaphragm appears to be intact and the lung fields seem to be normally aerated."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./ConfGuide/images/patient64847_study1_view1_frontal.jpg",
+            "model": "rohithbojja_llava-med-v1.6",
+            "flagged_pathologies": [
+                "Cardiomegaly",
+                "Consolidation",
+                "Enlarged Cardiomediastinum",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pleural Other",
+                "Pneumonia"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Cardiomegaly",
+                    "reasons for presence": "The presence of Cardiomegaly in this chest X-ray can be inferred from the markedly elevated position of the heart shadow. This elevation is due to the upward displacement of the diaphragm, which is caused by the enlarged cardiac silhouette. The heart appears to occupy a higher percentage of the vertical height of the thoracic cavity compared to normal. Additionally, the aortic knob, a prominent curvature at the upper part of the aorta, is more pronounced than usual, further suggesting the presence of Cardiomegaly.",
+                    "reasons against presence": "However, it is important to note that the elevation of the heart shadow can be multifactorial and may be due to factors other than Cardiomegaly. For example, it could be caused by respiratory disease or diaphragmatic paralysis. Therefore, while the radiographic features in this image support the presence of Cardiomegaly, additional clinical information and evaluation by a healthcare professional are necessary to confirm the diagnosis."
+                },
+                {
+                    "label": "Consolidation",
+                    "reasons for presence": "The image shows a homogenous, opaque appearance in the right lung, which could be indicative of consolidation. This appears to be a multilobar consolidation affecting both the upper and lower lobes of the right lung.",
+                    "reasons against presence": "However, it is important to consider other possible causes for the observed opacity, such as pneumonia or pulmonary edema. Additionally, the presence of consolidation may not be fully appreciated without additional context or a more detailed assessment of the patient's clinical history and symptoms."
+                },
+                {
+                    "label": "Enlarged Cardiomediastinum",
+                    "reasons for presence": "The presence of a markedly increased vertical distance between the superior and inferior costal margins, as well as the apparent elevation of the heart above the diaphragm.",
+                    "reasons against presence": "The absence of any visible pericardial effusion or pleural effusion, which are sometimes associated with Enlarged Cardiomediastinum."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "The radiograph shows a markedly increased density in the right lung field, which could be indicative of a fracture. Additionally, there is a visible crack or disruption in the bone structure, particularly in the S2 to S4 region. These findings are consistent with the presence of a fracture.",
+                    "reasons against presence": "However, it is important to note that the absence of periosteal reaction or soft tissue swelling around the affected area may argue against the presence of a fresh fracture. Furthermore, the patient's clinical history and physical examination findings should also be taken into consideration when interpreting this image."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "The image shows a multilobar consolidation in the right lung, which could be indicative of a lung lesion. This appears as a homogenous opacification that affects multiple lobes of the lung.",
+                    "reasons against presence": "However, it is important to note that multilobar consolidations can have various causes, and the presence of a lung lesion requires further evaluation with additional imaging studies and clinical assessment."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "The image shows multiple areas of increased density in both lungs, which could be considered as Lung Opacity. These areas of increased density may represent pulmonary consolidations or other lung abnormalities.",
+                    "reasons against presence": "However, it is important to note that the presence of Lung Opacity is a subjective finding and can vary based on the observer's interpretation. Additionally, there are no visible pleural effusions, lymphadenopathy, or other significant abnormalities that would strongly support the diagnosis of Lung Opacity."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The chest X-ray appears to show a normal lung architecture with no visible consolidations, pleural effusions, or lymphadenopathy. The heart size is within normal limits and the diaphragm is well-defined. There are no focal pulmonary opacities or areas of increased density that would suggest a parenchymal abnormality. The absence of these findings supports the assessment of No Finding.",
+                    "reasons against presence": "However, it is important to consider the patient's clinical history, symptoms, and additional imaging modalities, if available, to fully evaluate for possible underlying conditions. While the current X-ray does not show any abnormalities, a more comprehensive assessment may be necessary to rule out potential lung diseases or other respiratory issues."
+                },
+                {
+                    "label": "Pleural Other",
+                    "reasons for presence": "The presence of pleural effusion is suggested by the homogeneous, low-density area observed in the posterior and inferior segments of both lungs. This could be due to various causes, including heart failure, pneumonia, or malignancy.",
+                    "reasons against presence": "However, it is important to consider that pleural effusion may not always be visible on a chest X-ray, and additional imaging modalities or clinical assessment may be necessary to confirm the diagnosis. In this case, the absence of any pleural effusion or other abnormalities in the pleural space argues against the presence of Pleural Other."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "Increased opacity in the right lung, which could be indicative of pneumonia. This appears as a consolidation or lung collapse, with a more dense appearance compared to the surrounding lung tissue.",
+                    "reasons against presence": "No visible pleural effusion or pleuritic changes, which are sometimes associated with pneumonia. Additionally, there are no signs of bronchiectasis or marked lymphadenopathy, which may also be present in cases of pneumonia."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./ConfGuide/images/patient64838_study1_view1_frontal.jpg",
+            "model": "rohithbojja_llava-med-v1.6",
+            "flagged_pathologies": [
+                "Cardiomegaly",
+                "Consolidation",
+                "Edema",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pneumonia"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Cardiomegaly",
+                    "reasons for presence": "The presence of cardiomegaly may be suggested by the apparent enlargement of the heart shadow in the chest X-ray. This enlargement could be due to various factors, including fluid accumulation, muscle hypertrophy, or other conditions that affect the heart's size. However, it is important to consider other clinical findings and patient history to confirm the diagnosis of cardiomegaly.",
+                    "reasons against presence": "There are no visible radiographic evidences in this image that argue against the presence of cardiomegaly. The heart shadow appears to be larger than normal, which could indicate an enlarged heart. However, it is crucial to consider the patient's symptoms, electrocardiogram results, and additional diagnostic tests to reach a definitive conclusion about the presence of cardiomegaly."
+                },
+                {
+                    "label": "Consolidation",
+                    "reasons for presence": "The image shows a homogenous, opaque appearance within the right lung, which could be indicative of consolidation. This appears to be a multilobar consolidation affecting both the upper and lower lobes of the right lung.",
+                    "reasons against presence": "However, it is important to consider other possible causes for the observed opacity, such as pneumonia or pulmonary edema. Additionally, the presence of a small pleural effusion in the left hemithorax could be confusing the appearance of consolidation. Further clinical evaluation and consideration of the patient's symptoms and medical history are necessary to determine the exact nature of the lung opacity."
+                },
+                {
+                    "label": "Edema",
+                    "reasons for presence": "Perihilar and right upper quadrant pleural effusion",
+                    "reasons against presence": "No evident reticular or alveolar opacities, no lymphatic obstruction, no marked vascular engagement"
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "Periosteal reaction and callus formation are visible in the image, suggesting an old healing fracture. The bone appears to be disrupted with a clear separation at the fracture site.",
+                    "reasons against presence": "There is no acute soft tissue swelling or periarticular air present in the image, which could indicate a fresh fracture. Additionally, there are no signs of displacement or malalignment of the bone segments."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "The image shows a multilobar consolidation in the right lung, which is a solid area of lung tissue that has become filled with fluid and cellular debris. This appearance is consistent with a lung lesion.",
+                    "reasons against presence": "However, it is important to note that a single radiographic image may not be sufficient to definitively diagnose a lung lesion. Additional imaging studies or biopsy may be necessary to confirm the presence of a lung lesion and rule out other potential causes of the observed consolidation."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "The image shows a multilobar consolidation in the right lung, which is a form of lung opacity. This appears as a homogeneous, opaque area within the lung parenchyma, affecting multiple lobes.",
+                    "reasons against presence": "There are no visible signs of lung opacity in the left lung or in the interstitial spaces between the lung segments. The remaining lung architecture appears normal, with no areas of increased density or consolidation that would suggest the presence of lung opacity."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": [
+                        "Normal lung fields with no visible consolidations, effusions, or pleural abnormalities.",
+                        "Absence of prominent vascular markings or lymphadenopathy."
+                    ],
+                    "reasons against presence": [
+                        "Presence of a small, oval-shaped opacity in the right upper lung zone. This could be an artifact or a small pulmonary lesion. Further evaluation with additional imaging or consultation with a multidisciplinary team may be necessary to determine the nature of this finding."
+                    ]
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "Increased opacity in the right lung, which could be indicative of pneumonia. This appears as a consolidation or area of lung tissue that has become solid due to the presence of fluid, pus, cells, or blood.",
+                    "reasons against presence": "No visible consolidations or areas of lung tissue that appear solid in the left lung. Additionally, there are no signs of pleural effusion or hydrothorax present."
+                }
+            ]
+        }
+    }
+]
