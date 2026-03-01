@@ -9,31 +9,34 @@ from google.oauth2.service_account import Credentials
 # === CONFIG & SETUP ===
 st.set_page_config(page_title="Radiology Annotation Portal", layout="wide")
 
-# Custom UI styling for wide rows
+# Custom UI for paired Evaluation Cards
 st.markdown("""
     <style>
-    .stRadio [role=radiogroup]{padding: 8px; border-radius: 8px; background-color: #f8f9fa; border: 1px solid #e9ecef;}
-    div.stButton > button:first-child { background-color: #007bff; color: white; border-radius: 8px; border: none; height: 3em; font-weight: bold;}
+    .stRadio [role=radiogroup]{padding: 5px; border-radius: 5px; background-color: #f8f9fa;}
+    div.stButton > button:first-child { background-color: #007bff; color: white; border-radius: 8px; font-weight: bold;}
     
-    /* Full-width Row Style for Guidance */
-    .guidance-row {
-        padding: 15px;
-        border-left: 5px solid #007bff;
-        border-bottom: 1px solid #eee;
-        background-color: black;
-        margin-bottom: 15px;
-        border-radius: 0 5px 5px 0;
+    /* Card for Paired Guidance + Annotation */
+    .eval-card {
+        padding: 20px;
+        border: 1px solid #e1e4e8;
+        border-radius: 10px;
+        background-color: #ffffff;
+        margin-bottom: 25px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    .guidance-label {
-        font-size: 1.1rem;
+    .pathology-label {
+        font-size: 1.2rem;
         font-weight: bold;
-        color: white;
-        margin-bottom: 5px;
+        color: #1a73e8;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #f1f3f4;
+        padding-bottom: 5px;
     }
-    .reason-text {
-        font-size: 0.95rem;
-        line-height: 1.4;
-        margin: 5px 0;
+    .guidance-box {
+        margin-bottom: 15px;
+        padding: 10px;
+        background-color: #fffaf0;
+        border-radius: 5px;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -57,12 +60,10 @@ def append_to_gsheet(worksheet_name, row_dict):
     if not headers:
         headers = list(row_dict.keys())
         ws.append_row(headers)
-    
     new_keys = [k for k in row_dict.keys() if k not in headers]
     if new_keys:
         headers.extend(new_keys)
         ws.update_cells([gspread.cell.Cell(1, i+1, val) for i, val in enumerate(headers)])
-    
     values = [str(row_dict.get(h, "")) for h in headers]
     ws.append_row(values)
 
@@ -90,7 +91,7 @@ def load_and_prepare_data():
         uid = f"case_{i}_{filename}"
         prepared_data.append({
             "uid": uid, "mode": mode, "metadata": core_metadata,
-            "guidance": entry.get('clinical_guidance', {}).get('results', [])
+            "guidance": {res['label']: res for res in entry.get('clinical_guidance', {}).get('results', [])}
         })
     return prepared_data
 
@@ -124,85 +125,81 @@ remaining_data = [d for d in all_data if d["uid"] not in combined_done]
 
 # --- SIDEBAR ---
 with st.sidebar:
-    st.markdown(f"## 🩺 Case Workstation")
+    st.markdown(f"## 🩺 Workstation")
     st.markdown(f"**Dr. {st.session_state.username}**")
     st.divider()
     done_count, total_count = len(combined_done), len(all_data)
-    percent = int((done_count / total_count) * 100) if total_count > 0 else 0
-    st.progress(percent / 100)
     st.write(f"**Progress:** {done_count}/{total_count}")
+    st.progress(done_count / total_count if total_count > 0 else 0)
     st.divider()
-    if st.button("🚪 Log Out", use_container_width=True):
+    if st.button("Log Out"):
         st.session_state.logged_in = False
         st.rerun()
 
 # --- CONTENT AREA ---
 if not remaining_data:
-    st.success("🎉 All cases completed! Thank you.")
+    st.success("🎉 All cases completed!")
 else:
     current_case = remaining_data[0]
     uid, mode = current_case["uid"], current_case["mode"]
-    metadata, guidance_list = current_case["metadata"], current_case["guidance"]
+    metadata, guidance_dict = current_case["metadata"], current_case["guidance"]
 
-    # Layout: Image Column and Form Column
-    col_main, col_form = st.columns([1.6, 1], gap="large")
+    # 1. Image (Always Top)
+    st.markdown(f"#### 🖼️ Case ID: {uid} | Mode: {mode}")
+    filename = os.path.basename(metadata["image_path"])
+    image_path = os.path.join("images", filename)
+    if os.path.exists(image_path):
+        st.image(image_path, use_container_width=True)
+    else:
+        st.error(f"Image not found: {filename}")
 
-    with col_main:
-        # 1. Image
-        st.markdown(f"#### 🖼️ Case ID: {uid}")
-        filename = os.path.basename(metadata["image_path"])
-        image_path = os.path.join("images", filename)
-        if os.path.exists(image_path):
-            st.image(image_path, use_container_width=True)
-        else:
-            st.error(f"Missing: {filename}")
+    st.markdown("---")
 
-        # 2. Row-wise Guidance (Full Width of Column)
-        if mode == "Guided" and guidance_list:
-            st.markdown("---")
-            st.markdown("### 🔍 AI Clinical Guidance")
+    # 2. Paired Evaluation Sections
+    flagged = metadata.get("flagged_pathologies", [])
+    selections = {}
+
+    for pathology in flagged:
+        # Create a visual card for each pathology
+        with st.container():
+            st.markdown(f'<div class="eval-card">', unsafe_allow_html=True)
+            st.markdown(f'<div class="pathology-label">{pathology}</div>', unsafe_allow_html=True)
             
-            for item in guidance_list:
+            # Show guidance if in Guided mode and data exists
+            if mode == "Guided" and pathology in guidance_dict:
+                item = guidance_dict[pathology]
                 st.markdown(f"""
-                <div class="guidance-row">
-                    <div class="guidance-label">{item['label']}</div>
-                    <div class="reason-text"><b style="color:#28a745;">Evidence FOR:</b> {item.get('reasons for presence', 'N/A')}</div>
-                    <div class="reason-text"><b style="color:#dc3545;">Evidence AGAINST:</b> {item.get('reasons against presence', 'N/A')}</div>
+                <div class="guidance-box">
+                    <p style="margin-bottom:5px;"><b>Evidence For:</b> {item.get('reasons for presence', 'N/A')}</p>
+                    <p style="margin:0;"><b>Evidence Against:</b> {item.get('reasons against presence', 'N/A')}</p>
                 </div>
                 """, unsafe_allow_html=True)
-        elif mode == "Guided":
-            st.warning("No guidance data available for this case.")
-
-    with col_form:
-        st.markdown(f"### 📋 Diagnosis")
-        st.info(f"Study Mode: **{mode}**")
-        
-        flagged = metadata.get("flagged_pathologies", [])
-        selections = {}
-        
-        for pathology in flagged:
+            
+            # Show the radio buttons immediately after the guidance
             selections[pathology] = st.radio(
-                f"**{pathology}**",
+                f"Evaluation for {pathology}",
                 ["Yes", "No", "Unsure"],
                 key=f"{uid}_{pathology}",
-                horizontal=True
+                horizontal=True,
+                label_visibility="collapsed" # Hiding label because the card title handles it
             )
-        
-        st.markdown("<br><br>", unsafe_allow_html=True)
-        if st.button("Submit & Next ➔", use_container_width=True, type="primary"):
-            with st.spinner("Saving..."):
-                duration = round(time.time() - st.session_state.get("start_time", time.time()), 2)
-                result_row = {
-                    "uid": uid,
-                    "annotator": st.session_state.username,
-                    "mode": mode,
-                    "duration_sec": duration,
-                    **{f"pathology_{k}": v for k, v in selections.items()}
-                }
-                append_to_gsheet("Annotations", result_row)
-                st.session_state.locally_finished.add(uid)
-                st.session_state.start_time = time.time()
-                st.rerun()
+            st.markdown('</div>', unsafe_allow_html=True)
+
+    # 3. Submit Button
+    if st.button("Submit & Proceed ➔", use_container_width=True, type="primary"):
+        with st.spinner("Recording..."):
+            duration = round(time.time() - st.session_state.get("start_time", time.time()), 2)
+            result_row = {
+                "uid": uid,
+                "annotator": st.session_state.username,
+                "mode": mode,
+                "duration_sec": duration,
+                **{f"pathology_{k}": v for k, v in selections.items()}
+            }
+            append_to_gsheet("Annotations", result_row)
+            st.session_state.locally_finished.add(uid)
+            st.session_state.start_time = time.time()
+            st.rerun()
 
 if "start_time" not in st.session_state:
     st.session_state.start_time = time.time()
