@@ -20,7 +20,7 @@ st.markdown("""
         padding: 20px;
         border: 1px solid #e1e4e8;
         border-radius: 10px;
-        background-color: #ffffff;
+        background-color: black;
         margin-bottom: 25px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
@@ -35,7 +35,7 @@ st.markdown("""
     .guidance-box {
         margin-bottom: 15px;
         padding: 10px;
-        background-color: #fffaf0;
+        background-color: black;
         border-radius: 5px;
     }
     </style>
@@ -178,7 +178,7 @@ else:
             # Show the radio buttons immediately after the guidance
             selections[pathology] = st.radio(
                 f"Evaluation for {pathology}",
-                ["Yes", "No", "Unsure"],
+                ["Yes", "No"],
                 key=f"{uid}_{pathology}",
                 horizontal=True,
                 label_visibility="collapsed" # Hiding label because the card title handles it
