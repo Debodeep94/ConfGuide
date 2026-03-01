@@ -64,7 +64,7 @@ def get_done_uids(user):
 
 @st.cache_data
 def load_and_prepare_data():
-    with open("data.json", "r") as f:
+    with open("human_trial.json", "r") as f:
         data = json.load(f)
     prepared_data = []
     mid = len(data) // 2
