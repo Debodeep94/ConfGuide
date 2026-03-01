@@ -28,13 +28,25 @@ def append_to_gsheet(worksheet_name, row_dict):
     try:
         sh = connect_gsheet()
         ws = sh.worksheet(worksheet_name)
-        headers = ws.row_values(1)
-        if not headers:
-            headers = list(row_dict.keys())
-            ws.append_row(headers)
         
+        # 1. Get current headers from Row 1
+        headers = ws.row_values(1)
+        
+        # 2. Check if there are any new keys in row_dict not in headers
+        new_keys = [k for k in row_dict.keys() if k not in headers]
+        
+        if new_keys:
+            # Add new keys to the header list and update Row 1 in the sheet
+            headers.extend(new_keys)
+            ws.update_cells([gspread.cell.Cell(1, i+1, val) for i, val in enumerate(headers)])
+        
+        # 3. Align values to the updated headers
+        # Use .get(h, "") so if a case doesn't have a specific pathology, it leaves it blank
         values = [str(row_dict.get(h, "")) for h in headers]
+        
+        # 4. Append the row
         ws.append_row(values)
+        
     except Exception as e:
         st.error(f"Error saving to Google Sheets: {e}")
 
