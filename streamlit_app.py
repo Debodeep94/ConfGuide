@@ -9,14 +9,32 @@ from google.oauth2.service_account import Credentials
 # === CONFIG & SETUP ===
 st.set_page_config(page_title="Radiology Annotation Portal", layout="wide")
 
-# Custom UI styling for better ergonomics
+# Custom UI styling for wide rows
 st.markdown("""
     <style>
     .stRadio [role=radiogroup]{padding: 8px; border-radius: 8px; background-color: #f8f9fa; border: 1px solid #e9ecef;}
     div.stButton > button:first-child { background-color: #007bff; color: white; border-radius: 8px; border: none; height: 3em; font-weight: bold;}
-    .reportview-container .main .block-container{ padding-top: 1rem; }
-    /* Make expanders more compact */
-    .streamlit-expanderHeader { font-size: 0.9rem; font-weight: 600; }
+    
+    /* Full-width Row Style for Guidance */
+    .guidance-row {
+        padding: 15px;
+        border-left: 5px solid #007bff;
+        border-bottom: 1px solid #eee;
+        background-color: #ffffff;
+        margin-bottom: 15px;
+        border-radius: 0 5px 5px 0;
+    }
+    .guidance-label {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+    }
+    .reason-text {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin: 5px 0;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -112,7 +130,7 @@ with st.sidebar:
     done_count, total_count = len(combined_done), len(all_data)
     percent = int((done_count / total_count) * 100) if total_count > 0 else 0
     st.progress(percent / 100)
-    st.write(f"**Progress:** {done_count}/{total_count} ({percent}%)")
+    st.write(f"**Progress:** {done_count}/{total_count}")
     st.divider()
     if st.button("🚪 Log Out", use_container_width=True):
         st.session_state.logged_in = False
@@ -126,55 +144,53 @@ else:
     uid, mode = current_case["uid"], current_case["mode"]
     metadata, guidance_list = current_case["metadata"], current_case["guidance"]
 
-    # Main Layout
-    col_left, col_right = st.columns([1.4, 1], gap="large")
+    # Layout: Image Column and Form Column
+    col_main, col_form = st.columns([1.6, 1], gap="large")
 
-    with col_left:
-        # 1. Image View
-        st.markdown(f"#### 🖼️ Case View: {uid}")
+    with col_main:
+        # 1. Image
+        st.markdown(f"#### 🖼️ Case ID: {uid}")
         filename = os.path.basename(metadata["image_path"])
         image_path = os.path.join("images", filename)
         if os.path.exists(image_path):
             st.image(image_path, use_container_width=True)
         else:
-            st.error(f"Missing File: {filename}")
+            st.error(f"Missing: {filename}")
 
-        # 2. Guidance below Image
-        if mode == "Guided":
+        # 2. Row-wise Guidance (Full Width of Column)
+        if mode == "Guided" and guidance_list:
             st.markdown("---")
             st.markdown("### 🔍 AI Clinical Guidance")
-            # Displaying in 2 columns to save more vertical space if list is long
-            g_col1, g_col2 = st.columns(2)
-            for i, item in enumerate(guidance_list):
-                target_col = g_col1 if i % 2 == 0 else g_col2
-                with target_col:
-                    with st.expander(f"**{item['label']}**", expanded=True):
-                        st.markdown(f"<small>**For:** {item.get('reasons for presence', 'N/A')}</small>", unsafe_allow_html=True)
-                        st.markdown(f"<small>**Against:** {item.get('reasons against presence', 'N/A')}</small>", unsafe_allow_html=True)
-        else:
-            st.info("💡 **Blind Study**: Reasoning guidance is hidden for this case.")
+            
+            for item in guidance_list:
+                st.markdown(f"""
+                <div class="guidance-row">
+                    <div class="guidance-label">{item['label']}</div>
+                    <div class="reason-text"><b style="color:#28a745;">Evidence FOR:</b> {item.get('reasons for presence', 'N/A')}</div>
+                    <div class="reason-text"><b style="color:#dc3545;">Evidence AGAINST:</b> {item.get('reasons against presence', 'N/A')}</div>
+                </div>
+                """, unsafe_allow_html=True)
+        elif mode == "Guided":
+            st.warning("No guidance data available for this case.")
 
-    with col_right:
-        # 3. Evaluation Form
-        st.markdown(f"### 📋 Diagnosis ({mode})")
-        st.write("Please evaluate the findings based on clinical observation.")
+    with col_form:
+        st.markdown(f"### 📋 Diagnosis")
+        st.info(f"Study Mode: **{mode}**")
         
         flagged = metadata.get("flagged_pathologies", [])
         selections = {}
         
-        # Form Container for visual grouping
-        with st.container():
-            for pathology in flagged:
-                selections[pathology] = st.radio(
-                    f"Presence of **{pathology}**?",
-                    ["Yes", "No", "Unsure"],
-                    key=f"{uid}_{pathology}",
-                    horizontal=True
-                )
+        for pathology in flagged:
+            selections[pathology] = st.radio(
+                f"**{pathology}**",
+                ["Yes", "No", "Unsure"],
+                key=f"{uid}_{pathology}",
+                horizontal=True
+            )
         
         st.markdown("<br><br>", unsafe_allow_html=True)
-        if st.button("Save & Next Case ➔", use_container_width=True, type="primary"):
-            with st.spinner("Submitting..."):
+        if st.button("Submit & Next ➔", use_container_width=True, type="primary"):
+            with st.spinner("Saving..."):
                 duration = round(time.time() - st.session_state.get("start_time", time.time()), 2)
                 result_row = {
                     "uid": uid,
