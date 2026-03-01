@@ -187,7 +187,7 @@ else:
                     st.markdown(f"""
                     <div class="guidance-box">
                         <p style="margin-bottom:5px; color:beige;"><b>Evidence For Presence of {pathology}:</b> {item.get('reasons for presence', 'N/A')}</p>
-                        <p style="margin:0; color:slate;"><b>Evidence Against Presence of {pathology}:</b> {item.get('reasons against presence', 'N/A')}</p>
+                        <p style="margin:0; color:#D6EAF8;"><b>Evidence Against Presence of {pathology}:</b> {item.get('reasons against presence', 'N/A')}</p>
                     </div>
                     """, unsafe_allow_html=True)
                 else:
