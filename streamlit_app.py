@@ -27,7 +27,7 @@ st.markdown("""
     .guidance-label {
         font-size: 1.1rem;
         font-weight: bold;
-        color: #333;
+        color: white;
         margin-bottom: 5px;
     }
     .reason-text {
