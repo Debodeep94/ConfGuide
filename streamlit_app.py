@@ -141,8 +141,8 @@ with st.sidebar:
     st.progress(done_count / total_count if total_count > 0 else 0)
     
     st.divider()
-    if remaining_data:
-        st.info(f"Current Trial Mode: **{remaining_data[0]['mode']}**")
+    # if remaining_data:
+    #     st.info(f"Current Trial Mode: **{remaining_data[0]['mode']}**")
     
     if st.button("Log Out", use_container_width=True):
         st.session_state.logged_in = False
