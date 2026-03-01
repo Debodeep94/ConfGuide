@@ -9,6 +9,14 @@ from google.oauth2.service_account import Credentials
 # === CONFIG & SETUP ===
 st.set_page_config(page_title="Radiology Annotation Portal", layout="wide")
 
+# Custom CSS for a cleaner look
+st.markdown("""
+    <style>
+    .stRadio [role=radiogroup]{padding: 10px; border-radius: 10px; background-color: #f0f2f6;}
+    div.stButton > button:first-child { background-color: #007bff; color: white; border-radius: 8px;}
+    </style>
+    """, unsafe_allow_html=True)
+
 # Google Sheets setup
 SHEET_URL = st.secrets["gsheet"]["url"]
 
@@ -16,10 +24,7 @@ SHEET_URL = st.secrets["gsheet"]["url"]
 def connect_gsheet():
     creds = Credentials.from_service_account_info(
         st.secrets["gcp_service_account"],
-        scopes=[
-            "https://www.googleapis.com/auth/spreadsheets",
-            "https://www.googleapis.com/auth/drive"
-        ]
+        scopes=["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
     )
     client = gspread.authorize(creds)
     return client.open_by_url(SHEET_URL)
@@ -29,24 +34,20 @@ def append_to_gsheet(worksheet_name, row_dict):
         sh = connect_gsheet()
         ws = sh.worksheet(worksheet_name)
         
-        # 1. Get current headers from Row 1
+        # FIX: Dynamic Header Management
         headers = ws.row_values(1)
+        if not headers:
+            headers = list(row_dict.keys())
+            ws.append_row(headers)
         
-        # 2. Check if there are any new keys in row_dict not in headers
         new_keys = [k for k in row_dict.keys() if k not in headers]
-        
         if new_keys:
-            # Add new keys to the header list and update Row 1 in the sheet
             headers.extend(new_keys)
+            # Efficiently update header row
             ws.update_cells([gspread.cell.Cell(1, i+1, val) for i, val in enumerate(headers)])
         
-        # 3. Align values to the updated headers
-        # Use .get(h, "") so if a case doesn't have a specific pathology, it leaves it blank
         values = [str(row_dict.get(h, "")) for h in headers]
-        
-        # 4. Append the row
         ws.append_row(values)
-        
     except Exception as e:
         st.error(f"Error saving to Google Sheets: {e}")
 
@@ -63,29 +64,23 @@ def get_done_uids(user):
 
 @st.cache_data
 def load_and_prepare_data():
-    with open("human_trial.json", "r") as f:
+    with open("data.json", "r") as f:
         data = json.load(f)
-    
     prepared_data = []
     mid = len(data) // 2
-    
     for i, entry in enumerate(data):
         core_metadata = entry.get("data", entry.get("metadata", {}))
         mode = "Blind" if i < mid else "Guided"
         filename = os.path.basename(core_metadata.get("image_path", ""))
         uid = f"case_{i}_{filename}"
-        
         prepared_data.append({
-            "uid": uid,
-            "mode": mode,
-            "metadata": core_metadata,
+            "uid": uid, "mode": mode, "metadata": core_metadata,
             "guidance": entry.get('clinical_guidance', {}).get('results', [])
         })
     return prepared_data
 
 # === AUTHENTICATION ===
 USERS = st.secrets["credentials"]
-
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
@@ -107,17 +102,38 @@ all_data = load_and_prepare_data()
 done_uids = get_done_uids(st.session_state.username)
 remaining_data = [d for d in all_data if d["uid"] not in done_uids]
 
-st.sidebar.title(f"Dr. {st.session_state.username}")
-done_count = len(done_uids)
-total_count = len(all_data)
-st.sidebar.progress(done_count / total_count if total_count > 0 else 0)
-st.sidebar.write(f"Completed: {done_count} / {total_count}")
-
-if not remaining_data:
-    st.success("🎉 All cases completed! Thank you.")
-    if st.button("Log Out"):
+# --- DECORATED SIDEBAR ---
+with st.sidebar:
+    st.markdown(f"## 🩺 Medical Workstation")
+    st.markdown(f"**Practitioner:** Dr. {st.session_state.username}")
+    st.divider()
+    
+    st.markdown("### 📊 Session Progress")
+    done_count = len(done_uids)
+    total_count = len(all_data)
+    percent = int((done_count / total_count) * 100) if total_count > 0 else 0
+    
+    st.progress(percent / 100)
+    st.write(f"**{percent}% Complete** ({done_count}/{total_count} cases)")
+    
+    st.divider()
+    st.markdown("### 🛠️ Status")
+    if remaining_data:
+        curr_mode = remaining_data[0]["mode"]
+        st.success(f"Current Phase: **{curr_mode}**")
+        st.info("System: Ready for Input")
+    else:
+        st.balloons()
+        st.success("All Tasks Finished")
+    
+    st.divider()
+    if st.button("🚪 Log Out", use_container_width=True):
         st.session_state.logged_in = False
         st.rerun()
+
+# --- CONTENT AREA ---
+if not remaining_data:
+    st.success("🎉 All cases completed! Thank you.")
 else:
     current_case = remaining_data[0]
     uid, mode = current_case["uid"], current_case["mode"]
@@ -130,7 +146,6 @@ else:
     with col_img:
         filename = os.path.basename(metadata["image_path"])
         image_path = os.path.join("images", filename)
-        
         if os.path.exists(image_path):
             st.image(image_path, use_container_width=True, caption=f"Case ID: {uid}")
         else:
@@ -144,27 +159,22 @@ else:
                     st.markdown(f"**Reasons For:** \n{item.get('reasons for presence', 'N/A')}")
                     st.markdown(f"**Reasons Against:** \n{item.get('reasons against presence', 'N/A')}")
         else:
-            st.info("💡 **Blind Evaluation**: Review the image and select findings.")
+            st.info("💡 **Blind Evaluation**: Review the image and select findings without AI assistance.")
 
         st.markdown("---")
         st.markdown("### 📋 Diagnosis")
         
         flagged = metadata.get("flagged_pathologies", [])
         selections = {}
-        
-        # Using Radio buttons (bullet type) instead of dropdown
         for pathology in flagged:
             selections[pathology] = st.radio(
-                f"**{pathology}**",
-                ["Yes", "No", "Unsure"],
-                key=f"{uid}_{pathology}",
-                horizontal=True
+                f"**{pathology}**", ["Yes", "No", "Unsure"],
+                key=f"{uid}_{pathology}", horizontal=True
             )
 
-        st.markdown("##") # Spacer
-        if st.button("Submit & Next Case", use_container_width=True, type="primary"):
+        st.markdown("##") 
+        if st.button("Submit & Next Case ➔", use_container_width=True, type="primary"):
             duration = round(time.time() - st.session_state.get("start_time", time.time()), 2)
-            
             result_row = {
                 "uid": uid,
                 "annotator": st.session_state.username,
@@ -172,7 +182,6 @@ else:
                 "duration_sec": duration,
                 **{f"pathology_{k}": v for k, v in selections.items()}
             }
-            
             append_to_gsheet("Annotations", result_row)
             st.session_state.start_time = time.time()
             st.rerun()
