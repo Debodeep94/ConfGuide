@@ -12,7 +12,7 @@ st.set_page_config(page_title="Radiology Annotation Portal", layout="wide")
 # Custom UI for paired Evaluation Cards
 st.markdown("""
     <style>
-    .stRadio [role=radiogroup]{padding: 5px; border-radius: 5px; background-color: black;}
+    .stRadio [role=radiogroup]{padding: 5px; border-radius: 5px; background-color: beige;}
     div.stButton > button:first-child { background-color: #007bff; color: black; border-radius: 8px; font-weight: bold;}
     
     /* Card for Paired Guidance + Annotation */
