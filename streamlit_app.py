@@ -13,7 +13,7 @@ st.set_page_config(page_title="Radiology Annotation Portal", layout="wide")
 st.markdown("""
     <style>
     .stRadio [role=radiogroup]{padding: 5px; border-radius: 5px; background-color: #f8f9fa;}
-    div.stButton > button:first-child { background-color: #007bff; color: white; border-radius: 8px; font-weight: bold;}
+    div.stButton > button:first-child { background-color: #007bff; color: beige; border-radius: 8px; font-weight: bold;}
     
     /* Card for Paired Guidance + Annotation */
     .eval-card {
