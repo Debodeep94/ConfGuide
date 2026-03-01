@@ -19,7 +19,7 @@ def show_instructions():
         * **Total Cases:** 20 Studies.
         * **Format:** You will review 10 unique images, each presented twice.
         * **Conditions:** * **Blind:** Evaluating images based solely on your clinical judgment.
-            * **Guided:** Evaluating images with the support of AI-generated 'Evidence For' and 'Against'.
+            * **Guided:** Evaluation supported by clinical 'Evidence For' and 'Against' findings.
         """)
 
     with col_img:
