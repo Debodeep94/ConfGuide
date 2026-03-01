@@ -186,15 +186,15 @@ else:
                     item = guidance_dict[pathology]
                     st.markdown(f"""
                     <div class="guidance-box">
-                        <p style="margin-bottom:5px; color:#a5d6a7;"><b>Evidence For:</b> {item.get('reasons for presence', 'N/A')}</p>
-                        <p style="margin:0; color:#ef9a9a;"><b>Evidence Against:</b> {item.get('reasons against presence', 'N/A')}</p>
+                        <p style="margin-bottom:5px; color:#a5d6a7;"><b>Evidence For Presence:</b> {item.get('reasons for presence', 'N/A')}</p>
+                        <p style="margin:0; color:#ef9a9a;"><b>Evidence Against Presence:</b> {item.get('reasons against presence', 'N/A')}</p>
                     </div>
                     """, unsafe_allow_html=True)
                 else:
                     st.markdown('<div class="guidance-box"><i>Blind Mode: Clinical guidance suppressed.</i></div>', unsafe_allow_html=True)
 
             with col_radio:
-                st.write("**Clinical Finding:**")
+                st.write("**Clinical Decision:**")
                 selections[pathology] = st.radio(
                     f"Finding for {pathology}",
                     ["Yes", "No"],
