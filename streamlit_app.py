@@ -20,7 +20,7 @@ st.markdown("""
         padding: 15px;
         border-left: 5px solid #007bff;
         border-bottom: 1px solid #eee;
-        background-color: #ffffff;
+        background-color: black;
         margin-bottom: 15px;
         border-radius: 0 5px 5px 0;
     }
