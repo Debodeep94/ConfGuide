@@ -186,8 +186,8 @@ else:
                     item = guidance_dict[pathology]
                     st.markdown(f"""
                     <div class="guidance-box">
-                        <p style="margin-bottom:5px; color:#a5d6a7;"><b>Evidence For Presence of {item}:</b> {item.get('reasons for presence', 'N/A')}</p>
-                        <p style="margin:0; color:#ef9a9a;"><b>Evidence Against Presence of {item}:</b> {item.get('reasons against presence', 'N/A')}</p>
+                        <p style="margin-bottom:5px; color:#a5d6a7;"><b>Evidence For Presence of {pathology}:</b> {item.get('reasons for presence', 'N/A')}</p>
+                        <p style="margin:0; color:#ef9a9a;"><b>Evidence Against Presence of {pathology}:</b> {item.get('reasons against presence', 'N/A')}</p>
                     </div>
                     """, unsafe_allow_html=True)
                 else:
