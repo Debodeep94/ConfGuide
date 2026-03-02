@@ -122,6 +122,8 @@ else:
 
     filename = os.path.basename(metadata["image_path"])
     image_path = os.path.join("images", filename)
+
+    st.markdown(f"{image_path}")
     
     if os.path.exists(image_path):
         st.image(image_path, use_container_width=True)
