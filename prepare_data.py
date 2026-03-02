@@ -6,7 +6,7 @@ import streamlit as st
 
 @st.cache_data
 def load_and_prepare_data(username):
-    with open("human_trial.json", "r") as f:
+    with open("updated_human_trial.json", "r") as f:
         samples = json.load(f)
     
     # We want 10 images, but 20 total tasks (10 Blind + 10 Guided)

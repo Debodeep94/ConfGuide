@@ -1,0 +1,530 @@
+[
+    {
+        "metadata": {
+            "image_path": "./images/patient64756_view1_frontal.jpg",
+            "model": "google/medgemma-4b-it",
+            "flagged_pathologies": [
+                "Fracture",
+                "No Finding"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "The image is an AP view, which can sometimes obscure subtle fractures. There is a slight irregularity in the right clavicle, which could potentially represent a fracture. However, the image quality is not ideal for a definitive assessment.",
+                    "reasons against presence": "The image quality is suboptimal, making it difficult to assess for subtle fractures. The clavicle appears intact, and there are no obvious signs of displacement or cortical disruption. The presence of a fracture is not supported by the visible radiographic features."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lung fields appear clear with no obvious consolidation, effusions, or masses. The heart size is within normal limits. The mediastinum is unremarkable.",
+                    "reasons against presence": "The image is a single AP view, which can be prone to magnification of the heart and mediastinum. The lung markings are present, but the image quality is not ideal for detailed assessment. The patient's position is not clearly defined, and there is no evidence of significant atelectasis or pneumonia."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./images/patient64770_view1_frontal.jpg",
+            "model": "google/medgemma-4b-it",
+            "flagged_pathologies": [
+                "Atelectasis",
+                "Cardiomegaly",
+                "Consolidation",
+                "Edema",
+                "Enlarged Cardiomediastinum",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pleural Effusion",
+                "Pleural Other",
+                "Pneumonia",
+                "Pneumothorax"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Atelectasis",
+                    "reasons for presence": "There is increased opacity in the left lower lung field, obscuring the left hemidiaphragm. This could represent atelectasis, particularly given the AP projection, which can accentuate lung markings and obscure underlying pathology. The presence of air bronchograms would further support this finding.",
+                    "reasons against presence": "The opacity in the left lower lung field could be due to a number of factors, including vascular markings, which are more prominent in the AP projection. The left heart border is not obscured, which is less typical of atelectasis. The image quality is somewhat limited, making it difficult to definitively rule out atelectasis."
+                },
+                {
+                    "label": "Cardiomegaly",
+                    "reasons for presence": "The cardiac silhouette appears enlarged, with increased prominence of the left ventricle. The heart borders are less distinct than normal, suggesting a possible enlargement. The overall size of the heart seems to be greater than expected based on the chest width.",
+                    "reasons against presence": "The image quality is suboptimal, with significant patient rotation and potential for magnification. The heart size appears to be exaggerated by the AP projection and patient positioning. The heart borders are not clearly defined, and the overall appearance could be due to technical factors rather than true cardiomegaly."
+                },
+                {
+                    "label": "Consolidation",
+                    "reasons for presence": "There is increased opacity in the left lower lung field, obscuring the costophrenic angle. This could represent consolidation, particularly if there are air bronchograms. The heart size appears enlarged, which could be a sign of cardiomegaly, potentially related to pulmonary edema secondary to consolidation.",
+                    "reasons against presence": "The opacity in the left lower lung field may be due to a technical artifact or a normal variant. The presence of air bronchograms is not clearly demonstrated. The heart size is enlarged, but this could be due to other factors such as cardiomegaly or patient positioning. The image quality is suboptimal, making it difficult to assess for subtle findings."
+                },
+                {
+                    "label": "Edema",
+                    "reasons for presence": "There is increased opacity in the left lower lung field, potentially representing pulmonary edema. The borders are not sharply defined, and there is a subtle haziness in the lung tissue. The heart size appears enlarged, which can be associated with congestive heart failure and subsequent edema.",
+                    "reasons against presence": "The opacity in the left lower lung field could be due to a number of factors, including atelectasis or pneumonia. The lack of sharp borders and haziness in the lung tissue are not typical of edema. The heart size is enlarged, but this could be due to cardiomegaly rather than edema alone. The AP projection may exaggerate the heart size."
+                },
+                {
+                    "label": "Enlarged Cardiomediastinum",
+                    "reasons for presence": "The cardiomediastinal silhouette appears enlarged, with a widened superior mediastinum and apparent displacement of the trachea to the right. The heart size is also increased. These findings are suggestive of an enlarged cardiomediastinum.",
+                    "reasons against presence": "The image quality is suboptimal, with significant patient rotation and potential for magnification. The apparent widening of the mediastinum could be due to these technical factors rather than true cardiomegaly. The heart size appears increased, but this could also be due to the AP projection and patient positioning."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "There is increased opacity in the right lower zone with air bronchograms, obscuring the right heart border, which is consistent with consolidation. The right costophrenic angle is blunted, suggesting a possible pleural effusion. The heart size appears enlarged.",
+                    "reasons against presence": "The opacity in the right base appears to be vascular marking rather than consolidation, with clear vessel tapering and no air bronchograms. The right heart border is distinct, arguing against lower lobe consolidation. The AP projection may be contributing to the apparent enlargement of the cardiac silhouette."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, potentially representing a consolidation or mass. The borders are not clearly defined, and there is some obscuration of the right heart border. The patient's position and the AP projection may contribute to the appearance of increased density.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to patient positioning or technical factors. The presence of vascular markings in the lung fields could be misinterpreted as a lesion. The image quality is suboptimal, making it difficult to definitively rule out a lung lesion."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, potentially representing consolidation or atelectasis. The opacity obscures the right hemidiaphragm. The presence of air bronchograms would further support the presence of consolidation.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to vascular markings, particularly given the patient's supine position and the AP projection. The opacity is not sharply defined, and there are no clear air bronchograms. The right heart border is visible, which is less typical of consolidation. The opacity may also be due to a technical artifact."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lung fields appear relatively clear, with no obvious consolidation, pleural effusion, or pneumothorax. The heart size is enlarged, but the cardiac silhouette is not obscured by a large opacity. The mediastinum is not widened. The bony structures are intact.",
+                    "reasons against presence": "The image quality is suboptimal due to patient rotation and the AP projection, which can obscure subtle findings. The increased opacity in the lung fields could be due to these technical factors rather than a true pathological process. The heart size is enlarged, which could be a normal variant or related to underlying cardiac disease, but it is not necessarily indicative of a specific acute process."
+                },
+                {
+                    "label": "Pleural Effusion",
+                    "reasons for presence": "There is increased opacity in the left lower lung field, obscuring the costophrenic angle. This could represent a pleural effusion, particularly given the patient's supine position and AP projection, which can accentuate the blunting of the costophrenic angle.",
+                    "reasons against presence": "The opacity in the left lower lung field could be due to patient positioning and supine view, which can cause increased density in the lower lung zones. The costophrenic angle is not clearly blunted, and there are no other specific findings suggestive of pleural effusion, such as a meniscus sign or a well-defined fluid level. The lung markings are relatively clear, and there is no evidence of mediastinal shift."
+                },
+                {
+                    "label": "Pleural Other",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially representing a small pleural effusion or pleural thickening. The borders are not clearly defined, and there is some obscuration of the right hemidiaphragm. The patient's position and AP projection may contribute to this appearance.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to patient rotation or technical factors. The right heart border is relatively well-defined, and there is no clear blunting of the costophrenic angle. The overall lung fields appear relatively clear, without significant consolidation or atelectasis. The presence of metallic objects in the abdomen may also contribute to the appearance of increased density in the lower lung zones."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, potentially representing consolidation. The borders of the opacity are not sharply defined, and there is some obscuration of the right heart border. This could be consistent with pneumonia.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to a number of factors, including vascular markings or atelectasis. The borders of the opacity are not sharply defined, and there is some obscuration of the right heart border. The presence of air bronchograms is not clearly demonstrated, which is a typical finding in pneumonia. The image quality is suboptimal, making it difficult to definitively rule out pneumonia."
+                },
+                {
+                    "label": "Pneumothorax",
+                    "reasons for presence": "There is increased opacity in the right lower zone with air bronchograms, obscuring the right heart border, which is consistent with consolidation. The right hemidiaphragm is not clearly visible, suggesting a possible pleural line.",
+                    "reasons against presence": "The image quality is suboptimal, making it difficult to assess for subtle pneumothorax. The opacity in the right lower zone could be due to atelectasis or other non-pneumothorax causes. The presence of a right heart border suggests that there is no complete collapse of the lung, which is typical of pneumothorax. The presence of a right hemidiaphragm suggests that there is no complete collapse of the lung, which is typical of pneumothorax."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./images/patient64838_view1_frontal.jpg",
+            "model": "google/medgemma-4b-it",
+            "flagged_pathologies": [
+                "Cardiomegaly",
+                "Consolidation",
+                "Edema",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pneumonia"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Cardiomegaly",
+                    "reasons for presence": "The cardiac silhouette appears enlarged, with increased prominence of the left ventricle and atrium. The heart borders are less distinct than normal, suggesting a larger overall size. The cardiac size is difficult to precisely assess due to the AP projection and potential for magnification.",
+                    "reasons against presence": "The cardiac silhouette appears to be within normal limits in size and shape. The heart borders are well-defined, and there is no significant obscuration of the heart border by other structures. The AP projection can exaggerate cardiac size, so this finding alone is not sufficient to diagnose cardiomegaly."
+                },
+                {
+                    "label": "Consolidation",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially obscuring the right hemidiaphragm. The presence of air bronchograms within this opacity could suggest consolidation. However, the image quality is suboptimal, and the extent of the opacity is not clearly defined.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to atelectasis or vascular markings. The lack of a well-defined border and the presence of vessel tapering make consolidation less likely. The patient's position and inspiration may also contribute to the appearance of increased density in the lower lung fields."
+                },
+                {
+                    "label": "Edema",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, potentially representing pulmonary edema. The vascular markings are more prominent than normal, and there is a subtle blurring of the costophrenic angle. However, the image quality is suboptimal, and it is difficult to definitively assess for edema.",
+                    "reasons against presence": "The lung fields appear relatively clear, with no obvious consolidation or pleural effusion. The heart size is normal, and there is no significant cardiomegaly. The vascular markings are present, but not overtly increased. The image quality is suboptimal, which may limit the ability to detect subtle findings of edema."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "There is a linear radiodense opacity in the right mid-lung field, potentially representing a rib fracture. The exact location and extent of the fracture are difficult to assess due to the AP projection and overlying structures. The density of the opacity is consistent with bone.",
+                    "reasons against presence": "The image quality is suboptimal, and the AP projection can obscure subtle fractures. The presence of pacemaker leads and other metallic artifacts may also contribute to the appearance of increased density. The opacity could be a normal variant or a non-displaced fracture that is difficult to visualize."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially representing a consolidation or mass. The borders are not clearly defined, and there is some obscuration of the right heart border. The presence of air bronchograms is not clearly visible.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to vascular markings, particularly given the patient's age and the AP projection. The right heart border is distinct, and there are no obvious air bronchograms. The overall lung fields appear relatively clear, without significant consolidation or effusion."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially representing consolidation. The borders are not sharply defined, and there is some obscuration of the right heart border. This could be consistent with pneumonia or other infiltrative processes.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to vascular markings, particularly given the AP projection. The vessel tapering is suggestive of this. The right heart border is relatively clear, which is less typical of consolidation. The overall lung fields appear relatively clear, without widespread opacities."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lung fields appear relatively clear with no obvious consolidation, pleural effusion, or pneumothorax. The heart size is within normal limits, and the mediastinal contours are unremarkable. The bony structures are intact.",
+                    "reasons against presence": "The image quality is somewhat limited by the presence of pacemaker leads, which can obscure the lung parenchyma. However, there are no obvious signs of consolidation, effusion, or pneumothorax. The heart size appears normal, and the mediastinal structures are unremarkable. The ribs and clavicles are intact."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially representing consolidation. The borders are not sharply defined, and there is some obscuration of the right heart border. This could be consistent with pneumonia.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to vascular markings, particularly given the AP projection. The borders are not sharply defined, and there is no clear air bronchogram. The right heart border is distinct, making consolidation less likely. The image quality is adequate, but further evaluation with a lateral view would be helpful."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./images/patient64847_view1_frontal.jpg",
+            "model": "google/medgemma-4b-it",
+            "flagged_pathologies": [
+                "Cardiomegaly",
+                "Consolidation",
+                "Enlarged Cardiomediastinum",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pleural Other",
+                "Pneumonia"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Cardiomegaly",
+                    "reasons for presence": "The heart appears enlarged, with increased prominence of the left ventricle and atrium. The cardiac silhouette occupies a significant portion of the chest width, suggesting cardiomegaly. The right heart border is somewhat obscured, which can be a sign of cardiomegaly.",
+                    "reasons against presence": "The image is an AP projection, which can exaggerate the size of the heart. The heart size appears to be increased, but the degree of enlargement is difficult to precisely quantify due to the projection. The lung fields appear relatively clear, without significant consolidation or effusion, which would be more suggestive of cardiomegaly."
+                },
+                {
+                    "label": "Consolidation",
+                    "reasons for presence": "There is increased opacity in the lower lung fields, particularly in the right lower zone, obscuring the right heart border. This could be consistent with consolidation, although the image quality is suboptimal.",
+                    "reasons against presence": "The opacity in the lower lung fields may be due to patient rotation or technical factors. The right heart border is not completely obscured, and there are no clear air bronchograms. The overall density of the lung fields is relatively uniform, which is less typical of consolidation."
+                },
+                {
+                    "label": "Enlarged Cardiomediastinum",
+                    "reasons for presence": "The cardiomediastinal silhouette appears significantly enlarged, obscuring the right heart border. The aortic arch is prominent, and the heart size is increased. These findings are suggestive of an enlarged cardiomediastinum.",
+                    "reasons against presence": "The image quality is somewhat limited, and the presence of overlying structures (e.g., IV lines) could potentially obscure the true extent of the cardiomediastinal silhouette. The heart size appears to be increased, but this could be due to a variety of factors, including cardiomegaly or a large pericardial effusion. Further evaluation with a lateral chest radiograph is recommended to better assess the cardiomediastinal silhouette."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "There is a possible opacity in the right lower lung field, which could represent a fracture. The opacity is not well-defined and could be a normal finding. However, given the automated system's flagging, it warrants further investigation.",
+                    "reasons against presence": "The image quality is suboptimal, making it difficult to assess for subtle fractures. The opacity in the right lower lung field could be due to atelectasis or other non-fracture related findings. The presence of vascular markings in the lung fields also argues against a fracture."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "There is increased opacity in the right lower zone, which could represent a consolidation or mass. The density appears somewhat more dense than the surrounding lung tissue. The borders are not clearly defined, which could be consistent with a lesion.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to patient rotation or a normal variant such as vascular markings. The borders of the opacity are not sharply defined, and there are no air bronchograms, which are typically seen in consolidation. The heart size is enlarged, which could obscure subtle lung findings."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, potentially obscuring the right hemidiaphragm. This could represent consolidation or atelectasis. The opacity is not sharply defined, and there are no obvious air bronchograms.",
+                    "reasons against presence": "The opacity in the right lower lung field is not sharply defined, and there are no air bronchograms. The opacity may be due to vascular markings or atelectasis. The heart size is enlarged, which could obscure the lung markings."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lungs appear clear with no focal consolidation, pleural effusion, or pneumothorax identified. The heart size is enlarged, but the mediastinal contours are unremarkable. The bony structures are intact.",
+                    "reasons against presence": "The image quality is somewhat limited, and subtle findings may be missed. The AP projection can sometimes obscure the lower lung fields, potentially leading to a false negative for small infiltrates. The heart size is enlarged, which could be a normal variant or indicative of cardiomegaly, but further evaluation may be needed."
+                },
+                {
+                    "label": "Pleural Other",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially obscuring the right hemidiaphragm. This could represent a small pleural effusion or a localized area of consolidation. The image quality is somewhat limited, making it difficult to definitively assess the extent of the opacity.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to patient rotation or technical factors. The right heart border is not clearly obscured, which is less typical of a large pleural effusion or consolidation. The lung markings are present, suggesting no significant atelectasis or consolidation."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, potentially representing consolidation. The borders of the opacity are not sharply defined, and there is some obscuration of the right heart border. These findings could be consistent with pneumonia.",
+                    "reasons against presence": "The opacity in the right lower lung field appears more likely to be due to vascular markings, given the presence of vessel tapering. The right heart border is relatively clear, which is less typical of consolidation. The overall lung fields appear relatively clear, with no significant pleural effusion or other findings suggestive of pneumonia."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./images/patient64871_view1_frontal.jpg",
+            "model": "google/medgemma-4b-it",
+            "flagged_pathologies": [
+                "No Finding"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lung fields appear clear with no obvious consolidation, effusions, or masses. The heart size is within normal limits. The mediastinum is unremarkable.",
+                    "reasons against presence": "The image is a single AP view, which can be prone to magnification of the heart and mediastinum. The lung markings are present, but without any specific findings to suggest a pathology. The patient's inspiration is adequate, and there is no evidence of significant rotation or other technical artifacts that would obscure the lung fields."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./images/patient64912_view1_frontal.jpg",
+            "model": "google/medgemma-4b-it",
+            "flagged_pathologies": [
+                "Edema",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pneumonia"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Edema",
+                    "reasons for presence": "There is increased interstitial markings, particularly in the lung bases, which could represent pulmonary edema. The heart size appears normal, and there is no obvious pleural effusion. However, the image quality is somewhat limited, and subtle findings may be missed.",
+                    "reasons against presence": "The lung fields appear relatively clear, with no obvious consolidation or pleural effusion. The heart size is within normal limits. The presence of increased interstitial markings could be due to other causes, such as chronic lung disease or pulmonary vascular congestion, rather than acute edema. The AP projection may also contribute to the appearance of increased interstitial markings."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "There is a lucent area in the right posterior rib, which could represent a fracture. The density of the surrounding bone appears decreased, suggesting a possible fracture line.",
+                    "reasons against presence": "The image quality is suboptimal, and the lucency could be due to a technical artifact or a normal variation in bone density. The presence of a fracture is not definitively confirmed."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "There is a hazy opacity in the right lower lung field, potentially representing a consolidation or infiltrate. The borders are not well-defined, and there is some obscuration of the right heart border. This could be consistent with a lung lesion.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to normal lung markings, such as vascular crowding or atelectasis. The borders are not sharply defined, and there is no evidence of air bronchograms. The patient's inspiration is adequate, and there is no obvious pleural effusion. The image quality is adequate, but further evaluation with a lateral view may be helpful."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "There is increased opacity in the lower lung fields, particularly in the right lower zone, which could represent consolidation or atelectasis. The opacity obscures the right heart border, which is a typical finding in lower lobe consolidation.",
+                    "reasons against presence": "The opacity appears more likely to be due to increased interstitial markings and vascular crowding, common in patients with underlying lung disease or in the setting of a portable chest X-ray. The opacity is not sharply defined, and there are no air bronchograms, which are characteristic of consolidation. The patient's inspiration is not optimal, which could contribute to increased vascular markings."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lung fields appear relatively clear with no obvious consolidation, pleural effusion, or pneumothorax. The heart size is within normal limits, and the mediastinal contours are unremarkable. The bony structures are intact.",
+                    "reasons against presence": "The image quality is somewhat limited by the AP projection, which can accentuate the cardiac silhouette and obscure subtle lung abnormalities. There is some increased density in the lung bases, which could be due to atelectasis or vascular markings. However, the overall appearance is not suggestive of a significant pulmonary process."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "There is increased opacity in the right lower zone, which could represent consolidation. The borders are not sharply defined, and there is some obscuration of the right heart border. This could be consistent with pneumonia.",
+                    "reasons against presence": "The opacity in the right lower zone is not sharply demarcated, and there are no clear air bronchograms. The right heart border is visible, which is less typical for pneumonia. The overall lung fields appear relatively clear, with no significant pleural effusion or other findings suggestive of pneumonia."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./images/patient64938_view1_frontal.jpg",
+            "model": "google/medgemma-4b-it",
+            "flagged_pathologies": [
+                "Consolidation",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pleural Other",
+                "Pneumonia",
+                "Pneumothorax"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Consolidation",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially obscuring the right hemidiaphragm. The presence of air bronchograms within this opacity could suggest consolidation. However, the image quality is suboptimal, and it is difficult to definitively confirm consolidation.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to a number of factors, including atelectasis or a mass. The lack of clear air bronchograms makes consolidation less likely. The image quality is suboptimal, and it is difficult to definitively rule out consolidation."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "The image shows a significant opacity in the right lower lung field, obscuring the right hemidiaphragm. This could represent a consolidation or atelectasis, which could be associated with a rib fracture. The presence of a rib fracture is suggested by the opacity in the right lower lung field.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to a number of factors, including atelectasis, pneumonia, or a mass. The image quality is suboptimal, making it difficult to assess for subtle fractures. The presence of a rib fracture is not clearly evident on this AP view."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "There is a hazy opacity in the right lower lung field, potentially representing a consolidation or infiltrate. The borders are not well-defined, and there is some obscuration of the right hemidiaphragm. The patient's position and inspiration may contribute to this appearance.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to patient positioning or a normal variant. The lung markings are relatively clear, and there are no obvious air bronchograms. The heart border is not significantly obscured, making consolidation less likely. The image quality is suboptimal, making it difficult to definitively rule out a small lesion."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially obscuring the right hemidiaphragm. This could represent consolidation, atelectasis, or other infiltrative processes. The opacity is not clearly defined, and the borders are not well-defined, making it difficult to differentiate from normal lung markings.",
+                    "reasons against presence": "The opacity in the right lower zone appears to be a combination of vascular markings and potentially some atelectasis. The vessel tapering is present, and the opacity is not as dense as would be expected for consolidation. The right heart border is not obscured, which is less typical of lower lobe consolidation. The image quality is suboptimal, making it difficult to assess for subtle findings."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lung fields appear relatively clear with no obvious consolidation, pleural effusion, or masses. The heart size is within normal limits. The mediastinum is unremarkable.",
+                    "reasons against presence": "The image quality is suboptimal due to patient positioning and potential artifacts from external devices. The right lung appears to be significantly expanded, which could be a normal variant or related to the patient's position. The left lung appears relatively clear, but the assessment is limited by the image quality."
+                },
+                {
+                    "label": "Pleural Other",
+                    "reasons for presence": "There is a significant amount of subcutaneous emphysema in the right chest, extending from the right upper lung field down to the lower chest. This could be consistent with a pneumothorax or hemothorax, although the presence of air is more suggestive of a pneumothorax. The lung markings are not clearly visible in the affected area, which could be due to the presence of air.",
+                    "reasons against presence": "The image quality is suboptimal, making it difficult to assess for subtle findings. The presence of subcutaneous emphysema could be due to a number of factors unrelated to the lungs, such as trauma or recent procedures. The lung markings are present in the unaffected lung, suggesting that the opacity is not due to consolidation or effusion."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially representing consolidation. The borders are not sharply defined, and there is some obscuration of the right heart border. This could be consistent with pneumonia.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to a technical artifact or vascular marking. The borders are not sharply defined, and there is no clear air bronchogram. The right heart border is distinct, making consolidation less likely."
+                },
+                {
+                    "label": "Pneumothorax",
+                    "reasons for presence": "There is a significant amount of hyperlucency in the right hemithorax, particularly in the upper zone, with a visible pleural line. The right costophrenic angle is blunted, suggesting a possible pleural effusion. The mediastinum is shifted to the left, which is a classic sign of tension pneumothorax.",
+                    "reasons against presence": "The image quality is suboptimal, with significant patient rotation and overlying subcutaneous emphysema. The presence of a chest tube in the right hemithorax could be a false positive, as it could be obscuring the pneumothorax. The hyperlucency could be due to the chest tube itself."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./images/patient64965_view1_frontal.jpg",
+            "model": "google/medgemma-4b-it",
+            "flagged_pathologies": [
+                "Atelectasis",
+                "Cardiomegaly",
+                "Consolidation",
+                "Edema",
+                "Fracture",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pleural Effusion",
+                "Pleural Other",
+                "Pneumonia",
+                "Pneumothorax"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Atelectasis",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, potentially obscuring the right hemidiaphragm. This could represent atelectasis, especially given the AP projection, which can accentuate lung markings and obscure underlying structures. The presence of air bronchograms would further support this.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to a layering pleural effusion, which is common in AP views. The right costophrenic angle is blunted, suggesting fluid accumulation. The lack of clear air bronchograms makes atelectasis less likely, as they are a hallmark of this condition. The image quality is somewhat limited, making it difficult to definitively rule out atelectasis."
+                },
+                {
+                    "label": "Cardiomegaly",
+                    "reasons for presence": "The cardiac silhouette appears enlarged, with a widened cardiothoracic ratio. The heart borders are less distinct than normal, suggesting possible cardiomegaly. The pulmonary vasculature may be more prominent, which can be seen in cardiomegaly.",
+                    "reasons against presence": "The image quality is somewhat limited due to the semi-upright projection and potential patient rotation. The heart size appears to be within normal limits, and the cardiothoracic ratio is not significantly elevated. The pulmonary vasculature appears normal, and there is no evidence of significant pulmonary edema."
+                },
+                {
+                    "label": "Consolidation",
+                    "reasons for presence": "There is increased opacity in the right lower zone, obscuring the right hemidiaphragm. This could represent consolidation, particularly if there are air bronchograms visible. The presence of a pleural effusion on the right side could also contribute to the opacity.",
+                    "reasons against presence": "The opacity in the right lower zone appears more likely to be a pleural effusion, given the blunting of the right costophrenic angle. The density of the opacity is not as uniform as typically seen in consolidation. The presence of a central line and other medical devices could also obscure the underlying lung parenchyma, making it difficult to assess for consolidation."
+                },
+                {
+                    "label": "Edema",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, obscuring the right hemidiaphragm. This could represent a pleural effusion or consolidation, both of which can be associated with edema. The patient is also intubated, which could be a confounding factor.",
+                    "reasons against presence": "The lung fields appear relatively clear, with no obvious consolidation or widespread infiltrates. The costophrenic angles are sharp, and there is no blunting. The heart size appears normal, and there is no cardiomegaly. The patient is intubated, which could be a confounding factor."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "There is a possible opacity in the right lower lung field, which could represent a fracture. The density is not sharply defined, and the borders are somewhat irregular. However, the image quality is suboptimal, and it is difficult to definitively confirm a fracture.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to a number of factors, including atelectasis, pneumonia, or a mass. The borders of the opacity are not well-defined, and there are no clear air bronchograms. The patient is also rotated, which could distort the appearance of the lung fields. The presence of a central line and other medical devices also obscures the view of the lung bases."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially obscuring the right hemidiaphragm. This could represent a consolidation or pleural effusion. The presence of air bronchograms would further support consolidation.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to patient positioning or a technical artifact. The right heart border is visible, which is less suggestive of a large consolidation in the right lower lobe. The presence of a pleural effusion could also cause increased opacity, but the borders are not clearly defined."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, obscuring the right hemidiaphragm. This could represent consolidation or atelectasis. The presence of a right pleural effusion could also contribute to the opacity.",
+                    "reasons against presence": "The opacity in the right lower lung field appears to be a combination of a pleural effusion and possibly some atelectasis. The right hemidiaphragm is not clearly obscured, and the lung markings are somewhat obscured by the fluid. The left lung appears relatively clear, without obvious consolidation or effusion. The image quality is somewhat limited by the presence of multiple lines and tubes, which could potentially obscure subtle findings."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lung fields appear relatively clear, with no obvious consolidation, pleural effusion, or pneumothorax. The heart size is within normal limits, and the mediastinal contours are unremarkable. The bony structures are intact.",
+                    "reasons against presence": "The image quality is somewhat limited by the presence of multiple lines and tubes, which may obscure subtle findings. However, the overall appearance of the lung fields is consistent with a normal chest X-ray. There is no evidence of significant opacity, consolidation, or pleural effusion."
+                },
+                {
+                    "label": "Pleural Effusion",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, obscuring the right hemidiaphragm. The costophrenic angle is blunted, suggesting a possible pleural effusion. The fluid may be layering, with a denser opacity at the base.",
+                    "reasons against presence": "The right hemidiaphragm is not clearly visible, which could be due to patient positioning or the presence of a large effusion. The left lung appears clear, without any obvious pleural effusion. The image quality is somewhat limited, making it difficult to assess subtle findings."
+                },
+                {
+                    "label": "Pleural Other",
+                    "reasons for presence": "There is a hazy opacity in the right lower lung field, obscuring the right hemidiaphragm. This could represent a small pleural effusion or a layering pleural effusion. The costophrenic angle is blunted, which is suggestive of fluid.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to overlying bowel gas or a normal anatomical variation. The costophrenic angle is not sharply blunted, and the lung markings are relatively clear. The patient is semi-upright, which may reduce the likelihood of a significant pleural effusion."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially representing consolidation. The right hemidiaphragm is blunted, which could be due to a pleural effusion. The left lung appears relatively clear.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to a large pleural effusion obscuring the lung markings. The presence of a central line and other medical devices limits the ability to fully assess the lung parenchyma. The image quality is suboptimal, making it difficult to differentiate between consolidation and other causes of opacity."
+                },
+                {
+                    "label": "Pneumothorax",
+                    "reasons for presence": "There is a lucency in the right hemithorax, particularly in the costophrenic angle, which could represent a pneumothorax. The lung markings are less distinct in this area, suggesting air.",
+                    "reasons against presence": "The image quality is suboptimal, and the presence of a right-sided central line and other medical devices obscures the lung fields. The lung markings are present, and there is no clear evidence of a pleural line or absence of lung markings in the affected area. The mediastinum is midline, which is not typical of a large pneumothorax."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./images/patient65008_view1_frontal.jpg",
+            "model": "google/medgemma-4b-it",
+            "flagged_pathologies": [
+                "Atelectasis",
+                "Lung Lesion",
+                "Lung Opacity",
+                "No Finding",
+                "Pneumonia"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Atelectasis",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, potentially obscuring the right hemidiaphragm. This could represent atelectasis, especially given the AP projection, which can accentuate lung markings and obscure underlying structures. The presence of air bronchograms would further support this finding.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to a variety of factors, including vascular markings, particularly in the setting of an AP projection. The right heart border is visible, which is less typical of atelectasis. The presence of a pacemaker and leads could also obscure the underlying lung anatomy."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "There is increased opacity in the right lower zone, potentially representing a consolidation or mass. The borders are not clearly defined, and there is some obscuration of the right heart border. The presence of a pacemaker obscures the right lung base, making it difficult to assess for subtle findings.",
+                    "reasons against presence": "The opacity in the right lower zone could be due to atelectasis or vascular markings. The right heart border is visible, which is less suggestive of consolidation. The presence of a pacemaker obscures the right lung base, making it difficult to assess for subtle findings."
+                },
+                {
+                    "label": "Lung Opacity",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, potentially obscuring the right hemidiaphragm. This could represent consolidation, atelectasis, or other infiltrative processes. The opacity appears to be more prominent in the right lower lobe.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to vascular markings, particularly given the patient's body habitus and the AP projection. The borders of the opacity are not sharply defined, and there are no clear air bronchograms. The left lung appears clear, and there is no blunting of the costophrenic angle. The presence of a pacemaker obscures the lower portion of the right lung, potentially mimicking opacity."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lung fields appear relatively clear with no obvious consolidation, pleural effusion, or pneumothorax. The heart size is within normal limits, and the mediastinal structures are unremarkable.",
+                    "reasons against presence": "The image is an AP projection, which can sometimes obscure subtle findings. The presence of a pacemaker and its leads may also influence the appearance of the lung fields. However, without further information about the patient's clinical history and the quality of the image, it is difficult to definitively rule out the possibility of a small, non-diagnostic finding."
+                },
+                {
+                    "label": "Pneumonia",
+                    "reasons for presence": "There is increased opacity in the right lower lung field, potentially representing consolidation. The borders of the opacity are not sharply defined, and there is some obscuration of the right hemidiaphragm. This could be consistent with pneumonia.",
+                    "reasons against presence": "The opacity in the right lower lung field could be due to atelectasis or vascular markings. The borders of the opacity are not sharply defined, and there is no clear evidence of air bronchograms. The right heart border is visible, which is less typical of lobar consolidation. The presence of a pacemaker obscures the lower lung fields."
+                }
+            ]
+        }
+    },
+    {
+        "metadata": {
+            "image_path": "./images/patient65110_view1_frontal.jpg",
+            "model": "google/medgemma-4b-it",
+            "flagged_pathologies": [
+                "Enlarged Cardiomediastinum",
+                "Fracture",
+                "Lung Lesion",
+                "No Finding"
+            ]
+        },
+        "clinical_guidance": {
+            "results": [
+                {
+                    "label": "Enlarged Cardiomediastinum",
+                    "reasons for presence": "The cardiomediastinal silhouette appears enlarged, with a widened superior mediastinum. The heart size is also increased, which could be a sign of cardiomegaly. The aortic arch is prominent.",
+                    "reasons against presence": "The image quality is suboptimal, and the patient is rotated, which can distort the mediastinal width. The heart size appears to be normal, and there is no obvious widening of the superior mediastinum. The aortic arch is not particularly prominent."
+                },
+                {
+                    "label": "Fracture",
+                    "reasons for presence": "The image is an AP view, which can obscure subtle fractures. There is a possible opacity in the right lower lung field, which could represent a fracture with associated contusion or atelectasis. However, the image quality is suboptimal, and it is difficult to definitively assess for a fracture.",
+                    "reasons against presence": "The image is an AP projection, which can distort the appearance of fractures. The lung fields appear relatively clear, with no obvious signs of consolidation or pleural effusion. The heart size is mildly enlarged, but this could be due to the AP projection. The presence of pacemaker leads obscures the view of the ribs, making it difficult to assess for fractures."
+                },
+                {
+                    "label": "Lung Lesion",
+                    "reasons for presence": "There is a hazy opacity in the left lower lung field, which could represent a small consolidation or infiltrate. The borders are not well-defined, and there is some obscuration of the left hemidiaphragm. The patient's position and the AP projection may contribute to this appearance.",
+                    "reasons against presence": "The opacity in the left lower lung field is not sharply demarcated, and there are no clear air bronchograms. The heart size appears normal, and there is no significant pleural effusion. The presence of pacemaker leads may obscure subtle findings. The image quality is adequate, but further evaluation with a lateral view would be helpful."
+                },
+                {
+                    "label": "No Finding",
+                    "reasons for presence": "The lung fields appear clear with no obvious consolidation, pleural effusion, or masses. The heart size is likely normal, and the mediastinum is unremarkable. The bony structures are intact.",
+                    "reasons against presence": "The image is an AP projection, which can sometimes obscure subtle findings. The patient's position and inspiration may also affect the appearance of the lung fields. The presence of pacemaker leads can obscure the lung parenchyma."
+                }
+            ]
+        }
+    }
+]
