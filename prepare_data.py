@@ -21,6 +21,8 @@ def load_and_prepare_data(username):
             samples = samples[15:30]
         elif username == 'sambit':
             samples = samples[30:45]
+        elif username == 'debodeep':
+            samples = samples[20:40]
         else:
             st.warning("Guest users see a limited dataset. Please log in for full access.")
 
