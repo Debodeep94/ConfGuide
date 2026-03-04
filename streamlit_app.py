@@ -55,7 +55,7 @@ def append_to_gsheet(worksheet_name, row_dict):
 def get_done_uids(user):
     try:
         sh = connect_gsheet()
-        ws = sh.worksheet("Annotations")
+        ws = sh.worksheet("Final")
         df = pd.DataFrame(ws.get_all_records())
         if df.empty: return set()
         return set(df[df["annotator"] == user]["uid"].astype(str))

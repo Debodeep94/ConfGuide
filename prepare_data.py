@@ -7,7 +7,7 @@ import streamlit as st
 @st.cache_data
 def load_and_prepare_data(username):
 
-    if username != 'guest':
+    if username == 'guest':
         with open("updated_human_trial.json", "r") as f:
             samples = json.load(f)
     
