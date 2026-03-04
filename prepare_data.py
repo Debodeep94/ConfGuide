@@ -6,11 +6,24 @@ import streamlit as st
 
 @st.cache_data
 def load_and_prepare_data(username):
-    with open("updated_human_trial.json", "r") as f:
-        samples = json.load(f)
+
+    if username != 'guest':
+        with open("updated_human_trial.json", "r") as f:
+            samples = json.load(f)
     
-    # We want 10 images, but 20 total tasks (10 Blind + 10 Guided)
-    samples = samples[:10] 
+    else:
+        with open("updated_human_trial_final.json", "r") as f:
+            samples = json.load(f)
+
+        if username == 'barina':
+            samples = samples[:15] 
+        elif username == 'hemabha':
+            samples = samples[15:30]
+        elif username == 'sambit':
+            samples = samples[30:45]
+        else:
+            st.warning("Guest users see a limited dataset. Please log in for full access.")
+
     prepared_data = []
     
     for entry in samples:
